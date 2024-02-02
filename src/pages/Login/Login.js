@@ -1,13 +1,14 @@
-import BasicLayout from "../../layouts/HomeLayout";
+import LoginLayout from "../../layouts/LoginLayout";
+import "./Login.css"
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 const Login = () => {
-    return(
-        <BasicLayout>
-            <div className=" text-3xl">
-                <div>Login Page</div>
-            </div>
-        </BasicLayout>
+    return (
+        <LoginLayout>
+            
+        </LoginLayout>
     );
 }
 
 export default Login;
+

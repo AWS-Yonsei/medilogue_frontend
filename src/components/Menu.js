@@ -25,7 +25,7 @@ const Menu=() => {
             </div>
             <div className="w-4/5 flex justify-end p-4 font-medium">
                 <div className="text-black text-sm m-1 rounded">
-                    Sign In
+                    <Link to={'/login'}>Sign In</Link>
                 </div>
                 <div className="text-black text-sm m-1 rounded">
                     Register

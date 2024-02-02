@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import BasicLayout from "../../layouts/HomeLayout";
+import HomeLayout from "../../layouts/HomeLayout";
 
 const Home = () => {
     return(
-        <BasicLayout>
+        <HomeLayout>
             <div className=" text-3xl">
                 Main Page
             </div>
-        </BasicLayout>
+        </HomeLayout>
         
     );
 }
