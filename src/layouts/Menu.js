@@ -16,10 +16,10 @@ const Menu=() => {
                         <Link to={'/blog'}>Blog</Link>                        
                     </li>
                     <li className="pr-6 text-2xl">
-                        <Link to={'/pages'}>Pages</Link>                        
+                        <Link to={'/login'}>Sign In</Link>                        
                     </li>
                     <li className="pr-6 text-2xl">
-                        <Link to={'/contact'}>Contact</Link>                        
+                        <Link to={'/chatportal'}>Chat</Link>                        
                     </li>
                 </ul>
             </div>

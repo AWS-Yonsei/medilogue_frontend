@@ -1,7 +1,7 @@
 import "../pages/Login/Login.css"
 import image_Left_Doctor from "../components/Left_Doctor.png";
 import image_Right_Doctor from "../components/Right_Doctor.png";
-
+import QRCode from "../components/bi_qr-code-scan.png"
 const LoginLayout = () => {
     return (
         <>
@@ -39,7 +39,12 @@ const LoginLayout = () => {
                             value={"Sign in"} />
                     </div>
                     <br />
-                    <div className="LoginText">OR </div>
+                    <div className="OrText">OR </div>
+                    <br />
+                    <div className="QRContainer">
+                        <div className="QRText">Scan QR Code</div>
+                        <img class="QRCode" src={QRCode}></img>
+                    </div>
                 </div>
 
 
