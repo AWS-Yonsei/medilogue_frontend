@@ -1,3 +1,4 @@
+import "../pages/Patient/PatientManage.css"
 import "../pages/ChatBot/ChatPortal.css"
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -15,11 +16,6 @@ import Management from "../components/menu_management.png"
 import Mypage from "../components/menu_mypage.png"
 import Payments from "../components/menu_payments.png"
 import Record from "../components/menu_record.png"
-import Redbox from "../components/redbox.png"
-import Bluebox from "../components/bluebox.png"
-import Yellowbox from "../components/yellowbox.png"
-import Body_Arrow from "../components/arrow-right.png"
-import Demo from "../components/placeholder.jpg"
 
 const ChatLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -202,57 +198,15 @@ const ChatLayout = () => {
                     </div>
                 </div>
                 <div className="body">
-                    <div className="boxes">
-                        <div className="red-box">
-                            <img className="box-icon" src={Redbox}></img>
-                            <div className="box-text">
-                                상담내역 보기
-                            </div>
-                            <div className="box-to">
-                                <img class="box-arrow" src={Body_Arrow} />
-                            </div>
-                        </div>
-                        <div className="yellow-box">
-                            <img className="box-icon" src={Yellowbox}></img>
-                            <div className="box-text">
-                                일정관리
-                            </div>
-                            <div className="box-to">
-                                <img class="box-arrow" src={Body_Arrow} />
-                            </div>
-                        </div>
-                        <a href="/patient_manage" className="blue-box">
-                            <img className="box-icon" src={Bluebox}></img>
-                            <div className="box-text">
-                                환자관리
-                            </div>
-                            <div className="box-to">
-                                <img class="box-arrow" src={Body_Arrow} />
-                            </div>
-                        </a>
+                    <div className="body_title">
+                        관리중인 환자 진도
                     </div>
-                    <div className="charts">
-                        <div className="chart-box-left">
-                            <div className="placeholder"> Chart </div>
-                        </div>
-                        <div className="chart-box-right">
-                            <div className="placeholder"> Chart </div>
-                        </div>
-                    </div>
-                    <div className="tables">
-                        <div className="table_container">
-                            <div className="table_name">
-                                XXX의 상담내역
-                            </div>
-                            <div className="table_sort">
-                                
-                            </div>
-                            <div className="placeholder"> Table </div>
-                        </div>
+                    <div className="body_table">
+                        
                     </div>
                 </div>
             </div>
-
+            
         </>
     );
 }

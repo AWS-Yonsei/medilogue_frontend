@@ -1,37 +1,35 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../pages/Home/Home.css"
+import logo from "../components/logo.png";
 
-const Menu=() => {
+const Menu = () => {
     return (
-        <div className="">
-        <nav id='navbar' className=" flex bg-blue-200 rounded">
-            <div className="w-4/5 bg-grey-500">
-                <ul className="flex p-4 text-black fond-bold">
-                    <li className="pr-6 text-2xl">
-                        <Link to={'/'}>Home</Link>                        
-                    </li>
-                    <li className="pr-6 text-2xl">
-                        <Link to={'/about'}>About</Link>                        
-                    </li>
-                    <li className="pr-6 text-2xl">
-                        <Link to={'/blog'}>Blog</Link>                        
-                    </li>
-                    <li className="pr-6 text-2xl">
-                        <Link to={'/login'}>Sign In</Link>                        
-                    </li>
-                    <li className="pr-6 text-2xl">
-                        <Link to={'/chatportal'}>Chat</Link>                        
-                    </li>
-                </ul>
+        <div className="navbar">
+            <div className="logos">
+                <img class="logo" src={logo}></img>
             </div>
-            <div className="w-4/5 flex justify-end p-4 font-medium">
-                <div className="text-black text-sm m-1 rounded">
+            <ul className="navbar_list">
+                <li className="list_menu">
                     <Link to={'/login'}>Sign In</Link>
+                </li>
+                <li className="list_menu">
+                    <Link to={'/chatportal'}>Chat</Link>
+                </li>
+                <li className="list_menu">
+                    <Link to={'/'}>Home</Link>
+                </li>
+                <li className="list_menu">
+                    <Link to={'/about'}>About Us</Link>
+                </li>
+            </ul>
+            <div className="navbar_login">
+                <div className="login_button">
+                    <Link className="login_word" to={'/login'}>Log In</Link>
                 </div>
-                <div className="text-black text-sm m-1 rounded">
-                    Register
+                <div className="register_button">
+                    <Link className="register_word" to={'/login'}> Sign In </Link>
                 </div>
             </div>
-        </nav>
         </div>
     );
 }

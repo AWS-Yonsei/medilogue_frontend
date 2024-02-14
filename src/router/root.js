@@ -5,6 +5,7 @@ const Loading = <div>Loading...</div>
 const Home = lazy(() => import("../pages/Home/Home"))
 const Login = lazy(() => import("../pages/Login/Login"))
 const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"))
+const PatientManage = lazy(() => import("../pages/Patient/PatientManage"))
 const root = createBrowserRouter([
     {
         path: "",
@@ -17,6 +18,10 @@ const root = createBrowserRouter([
     {
         path: "chatportal",
         element: <Suspense fallback={Loading}><ChatPortal/></Suspense>
+    },
+    {
+        path: "patient_manage",
+        element: <Suspense fallback={Loading}><PatientManage/></Suspense>
     }
 ])
 export default root;
