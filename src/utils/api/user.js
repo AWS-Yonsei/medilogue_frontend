@@ -1,13 +1,13 @@
 //for API calls
 import axios from 'axios';
-const API_URL = "http://localhost:8080/";
+const API_URL = "http://localhost:8080";
 
 /*
 req: id, passwd
 res: id: [user의 id값], name: [user 성명]
 */
 
-export const login = async ({ uid, password }) => {
+export const login = async ( uid, password ) => {
   return axios
   .post(API_URL+'/login', { uid: uid, password: password })
   .then((response) => {

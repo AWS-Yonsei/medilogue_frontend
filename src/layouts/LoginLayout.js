@@ -2,7 +2,41 @@ import "../pages/Login/Login.css"
 import image_Left_Doctor from "../components/Left_Doctor.png";
 import image_Right_Doctor from "../components/Right_Doctor.png";
 import QRCode from "../components/bi_qr-code-scan.png"
+import UserService from "../utils/api/user.js"
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
+
+
 const LoginLayout = () => {
+    const [uid, setUid] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const onChangeUid  = (e) => {
+        const uid = e.target.value;
+        setUid(uid);
+    };
+
+    const onChangePassword = (e) => {
+        const password = e.target.value;
+        setPassword(password);
+    };
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        //form.current.validateAll();
+        UserService.login(uid, password).then(
+        () => {
+            navigate("/");
+            window.location.reload();
+        },
+        (error) => {
+            console.log(error);
+        }
+        );
+    };
+
     return (
         <>
             <div className="Back_Rectangle">
@@ -12,13 +46,17 @@ const LoginLayout = () => {
                 <div className="Heading">Welcome to Medilogue </div>
                 <div className="text-4xl Heading_Signin">Sign in</div>
 
-                <div className="LoginContainer">
+                <form onSubmit={handleLogin} className="LoginContainer">
                     <br />
                     <div className="LoginText">Enter your username or email address </div>
                     <br />
                     <div className={"inputContainer"}>
                         <input
-                            placeholder="Usernamee or Email address"
+                            type="text"
+                            name="uid"
+                            value={uid}
+                            onChange={onChangeUid}
+                            placeholder="Input your user id"
                             className={"inputBox"} />
                     </div>
                     <br />
@@ -26,6 +64,10 @@ const LoginLayout = () => {
                     <br />
                     <div className={"inputContainer"}>
                         <input
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={onChangePassword}
                             placeholder="Password"
                             className={"inputBox"} />
                     </div>
@@ -35,7 +77,7 @@ const LoginLayout = () => {
                     <div className={"inputContainer"}>
                         <input
                             className={"inputButton"}
-                            type="button"
+                            type="submit"
                             value={"Sign in"} />
                     </div>
                     <br />
@@ -45,7 +87,7 @@ const LoginLayout = () => {
                         <div className="QRText">Scan QR Code</div>
                         <img class="QRCode" src={QRCode}></img>
                     </div>
-                </div>
+                </form>
 
 
 
