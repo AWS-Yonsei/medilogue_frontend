@@ -6,6 +6,7 @@ const Home = lazy(() => import("../pages/Home/Home"))
 const Login = lazy(() => import("../pages/Login/Login"))
 const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"))
 const PatientManage = lazy(() => import("../pages/Patient/PatientManage"))
+const Quiz = lazy(() => import("../pages/Main/Quiz"))
 const root = createBrowserRouter([
     {
         path: "",
@@ -22,6 +23,11 @@ const root = createBrowserRouter([
     {
         path: "patient_manage",
         element: <Suspense fallback={Loading}><PatientManage/></Suspense>
-    }
+    },
+    {
+        path: "main/quiz",
+        element: <Suspense fallback={Loading}><Quiz/></Suspense>
+    },
+
 ])
 export default root;
