@@ -116,7 +116,7 @@ const Quiz = () => {
         {quizList.map((item) => (
           <QuizItem
             onClick={() => {
-              navigate(`main/quiz/${item.quizNo}`);
+              navigate(`${item.quizNo}`);
             }}
           >
             <UpperContainer>
