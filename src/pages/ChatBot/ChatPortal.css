@@ -340,14 +340,15 @@ html {
 
 .charts {
     display: flex;
-    width: max-content;
+    width: 100%;
     height: max-content;
     justify-content: center;
     padding: 6px;
+    margin-top: 12px;
 }
 
 .chart-box-left {
-    width: 652px;
+    width: 40%;
     height: 354px;
     flex-shrink: 0;
     margin: 0 100px;
@@ -357,7 +358,7 @@ html {
 }
 
 .chart-box-right {
-    width: 443px;
+    width: 30%;
     height: 354px;
     flex-shrink: 0;
     margin: 0 30px;
@@ -398,8 +399,8 @@ html {
 
 .placeholder {
     display: flex;
-    width: inherit;
-    height: inherit;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }

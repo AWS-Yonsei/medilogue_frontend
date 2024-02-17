@@ -44,10 +44,6 @@ const HomeLayout = () => {
                 </div>
             </div>
             <div className="Main_Bottom">
-                <div className="Bottom_logos">
-                    <img class="logo" src={logo}></img>
-                </div>
-
                 <div className="Bottom_docs">
                     <div className="Bottom_docs_medilogue">
                         Medilogue
