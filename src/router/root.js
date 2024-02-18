@@ -8,6 +8,10 @@ const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"));
 const PatientManage = lazy(() => import("../pages/Patient/PatientManage"));
 const Quiz = lazy(() => import("../pages/Main/Quiz"));
 const QuizDetail = lazy(() => import("../pages/Main/QuizDetail"));
+const PatientRecord = lazy(() => import("../pages/Patient/PatientRecord"));
+const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
+const Solution = lazy(() => import("../pages/Solution/Solution"));
+
 const root = createBrowserRouter([
   {
     path: "",
@@ -42,7 +46,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "main/quiz/:quizId",
+    path: "quiz/:quizId",
     element: (
       <Suspense fallback={Loading}>
         <QuizDetail />
@@ -50,10 +54,34 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "main/quiz",
+    path: "quiz",
     element: (
       <Suspense fallback={Loading}>
         <Quiz />
+      </Suspense>
+    ),
+  },
+  {
+    path: "record/:patientId",
+    element: (
+      <Suspense fallback={Loading}>
+        <PatientRecord />
+      </Suspense>
+    ),
+  },
+  {
+    path: "calendar/:date",
+    element: (
+      <Suspense fallback={Loading}>
+        <Calendar />
+      </Suspense>
+    ),
+  },
+  {
+    path: "solution",
+    element: (
+      <Suspense fallback={Loading}>
+        <Solution />
       </Suspense>
     ),
   },
