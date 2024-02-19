@@ -16,7 +16,7 @@ const Menu = () => {
                     <Link to={'/chatportal'}>Chat</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/'}>Home</Link>
+                    <Link to={'/quiz'}>Home</Link>
                 </li>
                 <li className="list_menu">
                     <Link to={'/about'}>About Us</Link>
