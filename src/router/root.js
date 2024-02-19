@@ -10,11 +10,12 @@ const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"));
 const PatientManage = lazy(() => import("../pages/Patient/PatientManage"));
 const MissionManage = lazy(() => import("../pages/Mission/MissionManage"));
 const PatientConsult = lazy(() => import("../pages/Patient_Consult/PatientConsult"));
-const Quiz = lazy(() => import("../pages/Main/Quiz"));
+const QuizSelect = lazy(() => import("../pages/Main/QuizSelect"));
 const QuizDetail = lazy(() => import("../pages/Main/QuizDetail"));
 const PatientRecord = lazy(() => import("../pages/Patient/PatientRecord"));
 const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
 const Solution = lazy(() => import("../pages/Solution/Solution"));
+const Quiz = lazy(() => import("../pages/Main/GameScreen"));
 
 const root = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "quiz/:quizId",
+    path: "quiz/feedback/:category",
     element: (
       <Suspense fallback={Loading}>
         <QuizDetail />
@@ -91,6 +92,14 @@ const root = createBrowserRouter([
   },
   {
     path: "quiz",
+    element: (
+      <Suspense fallback={Loading}>
+        <QuizSelect />
+      </Suspense>
+    ),
+  },
+  {
+    path: "quiz/:category",
     element: (
       <Suspense fallback={Loading}>
         <Quiz />
