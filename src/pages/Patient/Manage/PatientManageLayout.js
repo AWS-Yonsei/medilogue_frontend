@@ -1,22 +1,22 @@
-import "../pages/Patient/PatientManage.css";
+import "./PatientManage.css";
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import logo from "../components/logo.png";
 import Modal from 'react-modal';
-import Nav_Search from "../components/nav_search.png"
-import Nav_Change_Language from "../components/nav_change_language.png"
-import Nav_Notice from "../components/nav_notice.png"
-import Nav_Profile from "../components/avatar.png"
-import Appointment from "../components/menu_appointment.png"
-import Calendar from "../components/menu_calendar.png"
-import Chatbot from "../components/menu_chatbot.png"
-import Homepage from "../components/menu_homepage.png"
-import Management from "../components/menu_management.png"
-import Mypage from "../components/menu_mypage.png"
-import Payments from "../components/menu_payments.png"
-import Record from "../components/menu_record.png"
-import Etc from "../components/medi_placeholder.png"
+import logo from "../../../components/logo.png";
+import Nav_Search from "../../../components/nav_search.png"
+import Nav_Change_Language from "../../../components/nav_change_language.png"
+import Nav_Notice from "../../../components/nav_notice.png"
+import Nav_Profile from "../../../components/avatar.png"
+import Appointment from "../../../components/menu_appointment.png"
+import Calendar from "../../../components/menu_calendar.png"
+import Chatbot from "../../../components/menu_chatbot.png"
+import Homepage from "../../../components/menu_homepage.png"
+import Management from "../../../components/menu_management.png"
+import Mypage from "../../../components/menu_mypage.png"
+import Payments from "../../../components/menu_payments.png"
+import Record from "../../../components/menu_record.png"
+import Etc from "../../../components/medi_placeholder.png"
 
 const PatientManageLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -236,71 +236,73 @@ const PatientManageLayout = () => {
                     <div className="body_title">
                         관리중인 환자 진도
                     </div>
-                    <div className="body_table">
-                        <div class="patient_box">
-                            <img class="patient_image" src={Etc}></img>
-                            <div className="patient_name">
-                                정강희 님:
-                            </div>
-                            <Progress_Box>
-                                <Percent_Bar width={70}>
-                                    <div className="patient_bar_data">70%</div>
-                                </Percent_Bar>
-                            </Progress_Box>
-                            <div className="patient_button_box">
-                                <a href="/mission_manage" className="patient_button">
-                                    <div className="patient_button_data"> 미션관리 </div>
-                                </a>
-                                <div className="patient_button">
-                                    <div className="patient_button_data"> 환자관리 </div>
+                    <div className="body_table_container">
+                        <div className="body_table">
+                            <div class="patient_box">
+                                <img class="patient_image" src={Etc}></img>
+                                <div className="patient_name">
+                                    정강희 님:
+                                </div>
+                                <Progress_Box>
+                                    <Percent_Bar width={70}>
+                                        <div className="patient_bar_data">70%</div>
+                                    </Percent_Bar>
+                                </Progress_Box>
+                                <div className="patient_button_box">
+                                    <a href="/mission_manage" className="patient_button">
+                                        <div className="patient_button_data"> 미션관리 </div>
+                                    </a>
+                                    <div className="patient_button">
+                                        <div className="patient_button_data"> 환자관리 </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="patient_box">
-                            <img class="patient_image" src={Etc}></img>
-                            <div className="patient_name">
-                                강재현 님:
-                            </div>
-                            <Progress_Box>
-                                <Percent_Bar width={50}>
-                                    <div className="patient_bar_data">50%</div>
-                                </Percent_Bar>
-                            </Progress_Box>
+                            <div class="patient_box">
+                                <img class="patient_image" src={Etc}></img>
+                                <div className="patient_name">
+                                    강재현 님:
+                                </div>
+                                <Progress_Box>
+                                    <Percent_Bar width={50}>
+                                        <div className="patient_bar_data">50%</div>
+                                    </Percent_Bar>
+                                </Progress_Box>
 
-                            <div className="patient_button_box">
-                                <a href="/mission_manage" className="patient_button">
-                                    <div className="patient_button_data"> 미션관리 </div>
-                                </a>
-                                <div className="patient_button">
-                                    <div className="patient_button_data"> 환자관리 </div>
+                                <div className="patient_button_box">
+                                    <a href="/mission_manage" className="patient_button">
+                                        <div className="patient_button_data"> 미션관리 </div>
+                                    </a>
+                                    <div className="patient_button">
+                                        <div className="patient_button_data"> 환자관리 </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="patient_box">
-                            <img class="patient_image" src={Etc}></img>
-                            <div className="patient_name">
-                                우지훈 님:
-                            </div>
-                            <Progress_Box>
-                                <Percent_Bar width={100}>
-                                    <div className="patient_bar_data">100%</div>
-                                </Percent_Bar>
-                            </Progress_Box>
+                            <div class="patient_box">
+                                <img class="patient_image" src={Etc}></img>
+                                <div className="patient_name">
+                                    우지훈 님:
+                                </div>
+                                <Progress_Box>
+                                    <Percent_Bar width={100}>
+                                        <div className="patient_bar_data">100%</div>
+                                    </Percent_Bar>
+                                </Progress_Box>
 
-                            <div className="patient_button_box">
-                                <a href="/mission_manage" className="patient_button">
-                                    <div className="patient_button_data"> 미션관리 </div>
-                                </a>
-                                <div className="patient_button">
-                                    <div className="patient_button_data"> 환자관리 </div>
+                                <div className="patient_button_box">
+                                    <a href="/mission_manage" className="patient_button">
+                                        <div className="patient_button_data"> 미션관리 </div>
+                                    </a>
+                                    <div className="patient_button">
+                                        <div className="patient_button_data"> 환자관리 </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="patient_box">
+                            <div class="patient_box">
 
-                        </div>
-                        <div class="patient_box">
+                            </div>
+                            <div class="patient_box">
 
+                            </div>
                         </div>
                     </div>
                 </div>

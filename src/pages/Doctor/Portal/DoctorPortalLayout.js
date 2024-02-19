@@ -2,27 +2,27 @@ import "./DoctorPortal.css"
 import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import logo from "../../components/logo.png";
 import Modal from 'react-modal';
-import Nav_Search from "../../components/nav_search.png"
-import Nav_Change_Language from "../../components/nav_change_language.png"
-import Nav_Notice from "../../components/nav_notice.png"
-import Nav_Profile from "../../components/avatar.png"
-import Appointment from "../../components/menu_appointment.png"
-import Calendar from "../../components/menu_calendar.png"
-import Chatbot from "../../components/menu_chatbot.png"
-import Homepage from "../../components/menu_homepage.png"
-import Management from "../../components/menu_management.png"
-import Mypage from "../../components/menu_mypage.png"
-import Payments from "../../components/menu_payments.png"
-import Record from "../../components/menu_record.png"
-import Redbox from "../../components/redbox.png"
-import Bluebox from "../../components/bluebox.png"
-import Yellowbox from "../../components/yellowbox.png"
-import Body_Arrow from "../../components/arrow-right.png"
-import More from "../../components/more.png"
-import Greenlight from "../../components/green_light.png"
-import Orangelight from "../../components/orange_light.png"
+import logo from "../../../components/logo.png";
+import Nav_Search from "../../../components/nav_search.png"
+import Nav_Change_Language from "../../../components/nav_change_language.png"
+import Nav_Notice from "../../../components/nav_notice.png"
+import Nav_Profile from "../../../components/avatar.png"
+import Appointment from "../../../components/menu_appointment.png"
+import Calendar from "../../../components/menu_calendar.png"
+import Chatbot from "../../../components/menu_chatbot.png"
+import Homepage from "../../../components/menu_homepage.png"
+import Management from "../../../components/menu_management.png"
+import Mypage from "../../../components/menu_mypage.png"
+import Payments from "../../../components/menu_payments.png"
+import Record from "../../../components/menu_record.png"
+import Redbox from "../../../components/redbox.png"
+import Bluebox from "../../../components/bluebox.png"
+import Yellowbox from "../../../components/yellowbox.png"
+import Body_Arrow from "../../../components/arrow-right.png"
+import More from "../../../components/more.png"
+import Greenlight from "../../../components/green_light.png"
+import Orangelight from "../../../components/orange_light.png"
 
 const DoctorPortalLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PatientPortalLayout from "../../layouts/PatientPortalLayout";
+import PatientPortalLayout from "./PatientPortalLayout";
 
 const PatientPortal = () => {
     return (
