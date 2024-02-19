@@ -22,7 +22,7 @@ const Menu = () => {
                     <Link to={'/quiz'}>Quiz</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/about'}>About Us</Link>
+                    <Link to={'/calandar'}>About Us</Link>
                 </li>
             </ul>
             <div className="navbar_login">
