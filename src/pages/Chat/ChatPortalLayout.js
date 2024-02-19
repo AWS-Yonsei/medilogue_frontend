@@ -1,6 +1,5 @@
 import "./ChatPortal.css"
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Modal from 'react-modal';
 import logo from "../../components/logo.png";
 import doctor_imoction from "../../components/doctor_imo.png";
@@ -14,10 +13,10 @@ import Payments from "../../components/menu_payments.png";
 import Record from "../../components/menu_record.png";
 import Filter from "../../components/filter.png";
 import Videocall from "../../components/video_call.png";
+import Nav_Profile from "../../components/avatar.png"
 
 const ChatPortalLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-
     const modal_notice = {
         content: {
             top: '50%',
@@ -28,37 +27,6 @@ const ChatPortalLayout = () => {
             transform: 'translate(-50%, -50%)',
         },
     };
-    const ToggleContainer = styled.div`
-        position: relative;
-        > .toggle-container {
-            width: 50px;
-            height: 25px;
-            border-radius: 30px;
-            background-color: rgb(233,233,234);}
-        > .toggle--checked {
-            background-color: rgb(0,200,102);
-            transition : 0.5s
-        }
-        > .toggle-circle {
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            width: 22px;
-            height: 23px;
-            border-radius: 50%;
-            background-color: rgb(255,254,255);
-            transition : 0.5s
-        } >.toggle--checked {
-            left: 27px;
-            transition : 0.5s
-        }`
-        ;
-    const [isOn, setisOn] = useState(false);
-    const [typingMessage, setTypingMessage] = useState("");
-    const toggleHandler = () => {
-        // isOn의 상태를 변경하는 메소드를 구현
-        setisOn(!isOn)
-    };
     return (
         <>
             <div className="header">
@@ -67,17 +35,22 @@ const ChatPortalLayout = () => {
                 </div>
                 <div className="upper-nav">
                     <div className="upper-nav-box">
-                        <img src={doctor_imoction} className="upper-nav-imoticon"/>
-                        <div className="upper-nav-name">혈액과 강재현</div> 
-                        <img src={power_button} className="upper-nav-power"/>
+                        <img src={doctor_imoction} className="upper-nav-imoticon" />
+                        <div className="upper-nav-name">혈액과 강재현</div>
+                        <a href="/" className="upper-nav-power-container">
+                            <img src={power_button} className="upper-nav-power" />
+                        </a>
                     </div>
-                   
+
                 </div>
             </div>
             <div className="main">
                 <div className="side-nav">
                     <div className="flex-column">
-                        <h1 className="nav_menu">Menu</h1>
+                        <div className="side-nav-image-box">
+                            <img src={Nav_Profile} className="side-nav-image-avatar" />
+                            <div className="side-nav-image-name">User Name</div>
+                        </div>
                         <div className="w-[100%] my-[1%] border-[1px] border-white"></div>
                         <div>
                             <h2 className="nav_submenu">Core</h2>
@@ -153,14 +126,14 @@ const ChatPortalLayout = () => {
                         <div className="nav_doctor_box">
                             <img class="nav_doctor_logo" src={Filter} />
                             <a href="/management" className="nav_doctor_data">
-                                혈액과 강재현
+                                내과 강재현
                             </a>
-                            
+
                         </div>
                         <div className="nav_doctor_box">
                             <img class="nav_doctor_logo" src={Filter} />
                             <a href="/management" className="nav_doctor_data">
-                                내과 정강희
+                                안과 정강희
                             </a>
                         </div>
                         <div className="nav_doctor_box">
@@ -175,14 +148,14 @@ const ChatPortalLayout = () => {
                                 Video Call
                             </div>
                             <Modal style="modal_notice" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-                                화상 회의 화면으로
+
                             </Modal>
                         </div>
                     </div>
                 </div>
                 <div className="body">
                     <div className="chat_room_box">
-
+                    
                     </div>
                     <div className="chat_send_box">
                         <div className="chat_send_square">
