@@ -1,22 +1,21 @@
-import "../pages/ChatBot/ChatPortal.css"
+import "./ChatPortal.css"
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import logo from "../components/logo.png";
 import Modal from 'react-modal';
-import doctor_imoction from "../components/doctor_imo.png";
-import power_button from "../components/power_button.png";
-import Appointment from "../components/menu_appointment.png"
-import Calendar from "../components/menu_calendar.png"
-import Chatbot from "../components/menu_chatbot.png"
-import Homepage from "../components/menu_homepage.png"
-import Management from "../components/menu_management.png"
-import Mypage from "../components/menu_mypage.png"
-import Payments from "../components/menu_payments.png"
-import Record from "../components/menu_record.png"
-import Filter from "../components/filter.png"
-import Videocall from "../components/video_call.png"
+import logo from "../../components/logo.png";
+import doctor_imoction from "../../components/doctor_imo.png";
+import power_button from "../../components/power_button.png";
+import Appointment from "../../components/menu_appointment.png";
+import Calendar from "../../components/menu_calendar.png";
+import Chatbot from "../../components/menu_chatbot.png";
+import Homepage from "../../components/menu_homepage.png";
+import Mypage from "../../components/menu_mypage.png";
+import Payments from "../../components/menu_payments.png";
+import Record from "../../components/menu_record.png";
+import Filter from "../../components/filter.png";
+import Videocall from "../../components/video_call.png";
 
-const ChatLayout = () => {
+const ChatPortalLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const modal_notice = {
@@ -199,7 +198,7 @@ const ChatLayout = () => {
 
 
 
-export default ChatLayout;
+export default ChatPortalLayout;
 
 
 
