@@ -13,10 +13,10 @@ const Menu = () => {
                     <Link to={'/login'}>Sign In</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/patientportal'}>Patient</Link>
+                    <Link to={'/patient_portal'}>Patient</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/doctorportal'}>Doctor</Link>
+                    <Link to={'/doctor_portal'}>Doctor</Link>
                 </li>
                 <li className="list_menu">
                     <Link to={'/quiz'}>Quiz</Link>

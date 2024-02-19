@@ -12,15 +12,13 @@ html {
 .logos {
     display: flex;
     width: 200px;
-
     justify-content: center;
     align-items: center;
 }
 
 .logo {
-    margin: 0 auto;
     width: 12.5rem;
-    height: 2.74388rem;
+    height: 2.8rem;
 }
 
 .navbar_list {
@@ -50,7 +48,6 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 25px;
     margin-right: 3%;
 }
 
@@ -58,7 +55,7 @@ html {
     display: flex;
     width: 109px;
     height: 43px;
-    padding: 15px 25px;
+    padding: 15px;
     align-items: center;
     justify-content: center;
     gap: 15px;
