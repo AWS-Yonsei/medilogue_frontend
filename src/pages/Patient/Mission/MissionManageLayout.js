@@ -1,25 +1,10 @@
 import "./MissionManage.css"
 import React, { useState } from 'react';
-import Modal from 'react-modal';
-import styled from 'styled-components';
 import Checkbox from "../../../components/checkbox";
-import logo from "../../../components/logo.png";
-import Nav_Search from "../../../components/nav_search.png"
-import Nav_Change_Language from "../../../components/nav_change_language.png"
-import Nav_Notice from "../../../components/nav_notice.png"
-import Nav_Profile from "../../../components/avatar.png"
-import Appointment from "../../../components/menu_appointment.png"
-import Calendar from "../../../components/menu_calendar.png"
-import Chatbot from "../../../components/menu_chatbot.png"
-import Homepage from "../../../components/menu_homepage.png"
-import Management from "../../../components/menu_management.png"
-import Mypage from "../../../components/menu_mypage.png"
-import Payments from "../../../components/menu_payments.png"
-import Record from "../../../components/menu_record.png"
-import Plus from "../../../components/plus.png"
+import Plus from "../../../components/plus.png";
 import PortalMenu from "../../../layouts/PortalMenu/PortalMenu";
 import PortalPatientSideBar from "../../../layouts/PortalMenu/PortalPatientSideBar";
-
+import Check from "../../../components/check.png"
 
 const MissionLayout = () => {
     const [uncheck_1, check_1] = useState(false);
@@ -76,6 +61,7 @@ const MissionLayout = () => {
                                 </div>
                                 <div className="body_table_data_check">
                                     <Checkbox checked={uncheck_1} onChange={check_1} />
+                                    
                                 </div>
                             </div>
                             <div className="body_table_data_divider" />

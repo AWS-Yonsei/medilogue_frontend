@@ -7,6 +7,8 @@ import PortalMenu from "../../../layouts/PortalMenu/PortalMenu";
 import PortalDoctorSideBar from "../../../layouts/PortalMenu/PortalDoctorSideBar";
 
 const PatientManageLayout = () => {
+    let width = 0;
+    const max_data = 100;
     const Progress_Box = styled.div`
     display: flex;
     width: 100%;
@@ -44,7 +46,7 @@ const PatientManageLayout = () => {
             <div className="main">
                 <PortalDoctorSideBar>
                 </PortalDoctorSideBar>
-                 
+
                 <div className="body">
                     <div className="body_title">
                         관리중인 환자 진도
@@ -59,7 +61,7 @@ const PatientManageLayout = () => {
                                     </div>
                                     <Progress_Box>
                                         <Percent_Bar width={70}>
-                                            <div className="patient_bar_data">70%</div>
+                                            <div className="patient_bar_data" width={70}>70%</div>
                                         </Percent_Bar>
                                     </Progress_Box>
                                 </div>
@@ -98,8 +100,11 @@ const PatientManageLayout = () => {
                             <div class="patient_box">
                                 <img class="patient_image" src={Etc}></img>
                                 <div className="patient_data_box">
-                                    <div className="patient_name">
-                                        우지훈 님:
+                                    <div className="patient_bar_box">
+                                        <div className="patient_name">
+                                            우지훈 님:
+                                        </div>
+                                        <div className="patient_bar_complete">Complete!</div>
                                     </div>
                                     <Progress_Box>
                                         <Percent_Bar width={100}>

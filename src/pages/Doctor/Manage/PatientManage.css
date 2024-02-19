@@ -269,7 +269,7 @@ html {
     height: 15%;
     flex-direction: column;
     justify-content: center;
-    margin-left: 60px;  
+    margin-left: 60px;
     flex-shrink: 0;
     color: #444;
     font-family: Krub;
@@ -327,9 +327,11 @@ html {
     width: 70%;
     margin-left: 5%;
 }
-
-.patient_name {
+.patient_bar_box {
     display: flex;
+}
+.patient_name {
+    display: flex;   
     width: 8rem;
     height: 2rem;
     margin-bottom: 12px;
@@ -342,24 +344,16 @@ html {
     line-height: normal;
 }
 
-.patient_bar {
+.patient_bar_complete {
     display: flex;
-    width: 80%;
-    height: 2.1875rem;
-    flex-shrink: 0;
-    border-radius: 2.1875rem;
-    background: #D9D9D9;
-}
-
-.patient_bar_status {
-    display: flex;
-    float: inline-start;
-    width: 70%;
     justify-content: center;
-    height: 2.1875rem;
-    flex-shrink: 0;
-    border-radius: 2.1875rem;
-    background: #D5BBEE;
+    color: #2272BB;
+    text-align: center;
+    font-family: Krub;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 .patient_bar_data {
