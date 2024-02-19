@@ -64,10 +64,7 @@ const PatientManageLayout = () => {
 
     const Progress_Box = styled.div`
     display: flex;
-    position: relative;
-    top: 80px;
-    right: 60px;
-    width: 70%;
+    width: 100%;
     height: 2.1875rem;
     flex-shrink: 0;
     border-radius: 2.1875rem;
@@ -240,14 +237,16 @@ const PatientManageLayout = () => {
                         <div className="body_table">
                             <div class="patient_box">
                                 <img class="patient_image" src={Etc}></img>
-                                <div className="patient_name">
-                                    정강희 님:
+                                <div className="patient_data_box">
+                                    <div className="patient_name">
+                                        정강희 님:
+                                    </div>
+                                    <Progress_Box>
+                                        <Percent_Bar width={70}>
+                                            <div className="patient_bar_data">70%</div>
+                                        </Percent_Bar>
+                                    </Progress_Box>
                                 </div>
-                                <Progress_Box>
-                                    <Percent_Bar width={70}>
-                                        <div className="patient_bar_data">70%</div>
-                                    </Percent_Bar>
-                                </Progress_Box>
                                 <div className="patient_button_box">
                                     <a href="/mission_manage" className="patient_button">
                                         <div className="patient_button_data"> 미션관리 </div>
@@ -259,14 +258,17 @@ const PatientManageLayout = () => {
                             </div>
                             <div class="patient_box">
                                 <img class="patient_image" src={Etc}></img>
-                                <div className="patient_name">
-                                    강재현 님:
+                                <div className="patient_data_box">
+                                    <div className="patient_name">
+                                        강재현 님:
+                                    </div>
+                                    <Progress_Box>
+                                        <Percent_Bar width={50}>
+                                            <div className="patient_bar_data">50%</div>
+                                        </Percent_Bar>
+                                    </Progress_Box>
                                 </div>
-                                <Progress_Box>
-                                    <Percent_Bar width={50}>
-                                        <div className="patient_bar_data">50%</div>
-                                    </Percent_Bar>
-                                </Progress_Box>
+
 
                                 <div className="patient_button_box">
                                     <a href="/mission_manage" className="patient_button">
@@ -279,15 +281,16 @@ const PatientManageLayout = () => {
                             </div>
                             <div class="patient_box">
                                 <img class="patient_image" src={Etc}></img>
-                                <div className="patient_name">
-                                    우지훈 님:
+                                <div className="patient_data_box">
+                                    <div className="patient_name">
+                                        우지훈 님:
+                                    </div>
+                                    <Progress_Box>
+                                        <Percent_Bar width={100}>
+                                            <div className="patient_bar_data">100%</div>
+                                        </Percent_Bar>
+                                    </Progress_Box>
                                 </div>
-                                <Progress_Box>
-                                    <Percent_Bar width={100}>
-                                        <div className="patient_bar_data">100%</div>
-                                    </Percent_Bar>
-                                </Progress_Box>
-
                                 <div className="patient_button_box">
                                     <a href="/mission_manage" className="patient_button">
                                         <div className="patient_button_data"> 미션관리 </div>
