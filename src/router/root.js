@@ -10,9 +10,9 @@ const ChatPortal = lazy(() => import("../pages/Chat/ChatPortal"));
 const PatientManage = lazy(() => import("../pages/Doctor/Manage/PatientManage"));
 const MissionManage = lazy(() => import("../pages/Patient/Mission/MissionManage"));
 const PatientConsult = lazy(() => import("../pages/Patient/Consult/PatientConsult"));
-const Quiz = lazy(() => import("../pages/Main/Quiz"));
-const QuizDetail = lazy(() => import("../pages/Main/QuizDetail"));
-const PatientRecord = lazy(() => import("../pages/Patient/PatientRecord"));
+const Quiz = lazy(() => import("../pages/Quiz/Quiz"));
+const QuizDetail = lazy(() => import("../pages/Quiz/QuizDetail"));
+const PatientRecord = lazy(() => import("../pages/Patient/Record/PatientRecord"));
 const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
 const Solution = lazy(() => import("../pages/Solution/Solution"));
 
@@ -106,7 +106,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "calendar/:date",
+    path: "calendar",
     element: (
       <Suspense fallback={Loading}>
         <Calendar />

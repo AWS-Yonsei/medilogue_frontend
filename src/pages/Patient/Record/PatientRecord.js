@@ -1,4 +1,4 @@
-import PatientRecordLayout from "../../layouts/PatientRecordLayout";
+import PatientRecordLayout from "./PatientRecordLayout";
 
 const PatientRecord = () => {
     return(

@@ -1,4 +1,4 @@
-import SolutionLayout from "../../layouts/SolutionLayout";
+import SolutionLayout from "./SolutionLayout";
 
 const Solution = () => {
     return(
