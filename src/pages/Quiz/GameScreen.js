@@ -2,6 +2,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import { useNavigate } from "react-router-dom";
+
 
 import EnemyImage from '../../components/quiz/Enemy.png';
 import CharacterImage from '../../components/quiz/Character.png';
@@ -39,7 +41,7 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [quizResults, setQuizResults] = useState([]);
   const [sendingcategory, setSendingCategory] = useState(null); 
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (playerHP <= 0) {
       iswin = "false";
@@ -75,7 +77,7 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
   
   const handleSubmitAttack = () => {
     if (selectedAnswer !== null && !isGameOver) {
-      const correctAnswer = questionData.correctAnswer;
+      const correctAnswer = questionData.answer;
       const isCorrect = selectedAnswer === correctAnswer; 
 
       const result = {
@@ -241,7 +243,11 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
       >
         <h2>{state === "correct" && iswin === "true" && <p>승리하셨습니다.</p>}</h2>
         <h2>{state === "wrong" && iswin === "false" && <p>패배하셨습니다.</p>}</h2>
-        <button onClick={() => sendData()}>확인</button>
+        <button onClick={() => {
+          sendData();
+          console.log(questionData.category);
+          navigate(`${"/quiz/feedback/"+questionData.category}`);
+        }}>확인</button>
       </Modal>
 
       <Modal

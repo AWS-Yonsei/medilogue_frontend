@@ -2,7 +2,7 @@ import React from 'react';
 
 const Question = ({ questionData, onAnswer }) => {
   const handleAnswerClick = (option) => {
-    onAnswer(option, questionData.correctAnswer); // 선택한 답변과 정답을 함께 전달
+    onAnswer(option, questionData.answer); // 선택한 답변과 정답을 함께 전달
   };
 
   return (
