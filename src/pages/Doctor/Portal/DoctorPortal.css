@@ -510,23 +510,21 @@ html {
 }
 
 .table_main_data_button {
+    display: flex;
     text-align: center;
     justify-content: center;
     width: 60px;
     height: 30px;
+    color: #000;
+    font-family: Poppins;   
+    font-weight: 400;
+    line-height: 150%;
     flex-shrink: 0;
-    border-radius: 10px;
+    border-radius: 8px;
     background: #FFF;
-    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
-.placeholder {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
 
 .bottom_button {
     display: flex;
@@ -534,6 +532,7 @@ html {
     justify-content: center;
     align-items: center;
     padding: 6px;
+    margin-top: 12px;
     width: 80px;
     height: 40px;
     flex-shrink: 0;
@@ -546,4 +545,12 @@ html {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.placeholder {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }

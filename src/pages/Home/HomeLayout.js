@@ -62,7 +62,7 @@ const HomeLayout = () => {
                             </div>
                             <div className="Bottom_show_cap_underline" />
                             <div className="Bottom_show_docs">
-                                어쩌저쩌어쩌저쩌
+                                전문가에게 상담받고, 자신의 상황을 정확하게 파악하세요!
                             </div>
                             <div className="Bottom_show_tail">
                                 Read more
@@ -78,7 +78,7 @@ const HomeLayout = () => {
                             </div>
                             <div className="Bottom_show_cap_underline" />
                             <div className="Bottom_show_docs">
-                                어쩌저쩌어쩌저쩌
+                                지금까지 받아온 진료기록을 살펴보시고 건강의 상태를 확인하세요!
                             </div>
                             <div className="Bottom_show_tail">
                                 Read more
@@ -94,7 +94,7 @@ const HomeLayout = () => {
                             </div>
                             <div className="Bottom_show_cap_underline" />
                             <div className="Bottom_show_docs">
-                                어쩌저쩌어쩌저쩌
+                                국내 최고의 의료사들이 편리한 서비스를 위해 대기중입니다!
                             </div>
                             <div className="Bottom_show_tail">
                                 Read more

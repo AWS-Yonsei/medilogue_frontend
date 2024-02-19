@@ -137,7 +137,7 @@ const PatientPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Mypage} />
-                            <a href="/mypage" className="nav_data">
+                            <a href="/patient_portal" className="nav_data">
                                 My Page
                             </a>
                             <div className="nav_dash">
@@ -146,7 +146,7 @@ const PatientPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Chatbot} />
-                            <a href="/chatbot" className="nav_data">
+                            <a href="/chat_portal" className="nav_data">
                                 Chatbot
                             </a>
                             <div className="nav_dash">
@@ -206,16 +206,15 @@ const PatientPortalLayout = () => {
                 </div>
                 <div className="body">
                     <div className="boxes">
-                        <div className="red-box">
+                        <a href="/quiz" className="red-box">
                             <img className="box-icon" src={Redbox}></img>
                             <div className="box-text">
                                 의료 퀴즈
                             </div>
-                            
                             <div className="box-to">
                                 <img class="box-arrow" src={Body_Arrow} />
                             </div>
-                        </div>
+                        </a>
                         <div className="yellow-box">
                             <img className="box-icon" src={Yellowbox}></img>
                             <div className="box-text">
@@ -282,7 +281,7 @@ const PatientPortalLayout = () => {
                                     <div className="table_main_data">
                                         2024.01.02
                                     </div>
-                                    
+
                                     <div className="table_main_data">
                                         <div className="table_main_data_status">
                                             <img src={Greenlight} className="table_main_data_status_light" />
@@ -292,7 +291,7 @@ const PatientPortalLayout = () => {
                                         </div>
                                     </div>
                                     <div className="table_main_data">
-                                        <div className="table_main_data_button">확인</div>
+                                        <Link to={'/patient_consult'} className="table_main_data_button">확인</Link>
                                     </div>
                                     <div className="table_main_data">
                                         <img src={More} className="" />
@@ -312,7 +311,7 @@ const PatientPortalLayout = () => {
                                     <div className="table_main_data">
                                         2024.01.05
                                     </div>
-                                    
+
                                     <div className="table_main_data">
                                         <div className="table_main_data_status">
                                             <img src={Orangelight} className="table_main_data_status_light" />
@@ -322,7 +321,7 @@ const PatientPortalLayout = () => {
                                         </div>
                                     </div>
                                     <div className="table_main_data">
-                                        <div className="table_main_data_button">확인</div>
+                                        <Link to={'/patient_consult'} className="table_main_data_button">확인</Link>
                                     </div>
                                     <div className="table_main_data">
                                         <img src={More} className="" />
@@ -342,7 +341,7 @@ const PatientPortalLayout = () => {
                                     <div className="table_main_data">
                                         2024.01.23
                                     </div>
-                                    
+
                                     <div className="table_main_data">
                                         <div className="table_main_data_status">
                                             <img src={Orangelight} className="table_main_data_status_light" />
@@ -352,7 +351,7 @@ const PatientPortalLayout = () => {
                                         </div>
                                     </div>
                                     <div className="table_main_data">
-                                        <div className="table_main_data_button">확인</div>
+                                        <Link to={'/patient_consult'} className="table_main_data_button">확인</Link>
                                     </div>
                                     <div className="table_main_data">
                                         <img src={More} className="" />
@@ -372,7 +371,7 @@ const PatientPortalLayout = () => {
                                     <div className="table_main_data">
                                         2024.01.12
                                     </div>
-                                    
+
                                     <div className="table_main_data">
                                         <div className="table_main_data_status">
                                             <img src={Greenlight} className="table_main_data_status_light" />
@@ -382,7 +381,7 @@ const PatientPortalLayout = () => {
                                         </div>
                                     </div>
                                     <div className="table_main_data">
-                                        <div className="table_main_data_button">확인</div>
+                                        <Link to={'/patient_consult'} className="table_main_data_button">확인</Link>
                                     </div>
                                     <div className="table_main_data">
                                         <img src={More} className="" />
@@ -402,7 +401,7 @@ const PatientPortalLayout = () => {
                                     <div className="table_main_data">
                                         2024.01.15
                                     </div>
-                                    
+
                                     <div className="table_main_data">
                                         <div className="table_main_data_status">
                                             <img src={Greenlight} className="table_main_data_status_light" />
@@ -412,7 +411,7 @@ const PatientPortalLayout = () => {
                                         </div>
                                     </div>
                                     <div className="table_main_data">
-                                        <div className="table_main_data_button">확인</div>
+                                        <Link to={'/patient_consult'} className="table_main_data_button">확인</Link>
                                     </div>
                                     <div className="table_main_data">
                                         <img src={More} className="" />

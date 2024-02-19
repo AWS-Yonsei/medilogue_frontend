@@ -94,7 +94,7 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Mypage} />
-                            <a href="/mypage" className="nav_data">
+                            <a href="/" className="nav_data">
                                 My Page
                             </a>
                             <div className="nav_dash">
@@ -103,7 +103,7 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Chatbot} />
-                            <a href="/chatbot" className="nav_data">
+                            <a href="/chat_portal" className="nav_data">
                                 Chatbot
                             </a>
                             <div className="nav_dash">
