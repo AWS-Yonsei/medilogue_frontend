@@ -1,4 +1,5 @@
-import "../pages/Patient/PatientManage.css"
+import "../pages/Patient/PatientManage.css";
+import { Link } from "react-router-dom";
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import logo from "../components/logo.png";
