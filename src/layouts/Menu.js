@@ -29,9 +29,6 @@ const Menu = () => {
                 <div className="login_button">
                     <Link className="login_word" to={'/login'}>Log In</Link>
                 </div>
-                <div className="register_button">
-                    <Link className="register_word" to={'/login'}> Sign In </Link>
-                </div>
             </div>
         </div>
     );
