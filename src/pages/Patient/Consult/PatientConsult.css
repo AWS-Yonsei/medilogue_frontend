@@ -1,0 +1,457 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    height: 10%;
+}
+
+.logos {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 12.5rem;
+    height: 2.8rem;
+}
+
+.upper-nav {
+    display: flex;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    background: #BDD4EA;
+}
+
+.nav_searchbox {
+    display: inline-flex;
+    border-radius: 50px;
+    background: #FCFCFC;
+    width: 40%;
+    margin: auto;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.search_logo {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.nav_search_bar {
+    display: inline-flex;
+    height: 90%;
+    width: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 12px;
+}
+
+.nav_status {
+    width: 10%;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.nav_button {
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+}
+
+.nav_off {
+    display: inline-flex;
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 12px;
+    letter-spacing: -0.54px;
+}
+
+.nav_live {
+    display: inline-flex;
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 12px;
+    letter-spacing: -0.54px;
+}
+
+.nav_language_box {
+    display: inline-flex;
+    padding: 17px 30px 16px 43px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 23px;
+    border-radius: 50px;
+    border: 1px solid rgba(72, 74, 79, 0.73);
+}
+
+.nav_language_select {
+    color: #484A4F;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+}
+
+.nav_notice {
+    width: 10%;
+    padding: 12px;
+    margin: auto;
+    flex-shrink: 0;
+}
+
+.nav_notice_button {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    flex-shrink: 0;
+}
+
+.modal_notice {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 500px;
+    height: 200px;
+}
+
+.nav_login {
+    display: inline-flex;
+    width: 20%;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.nav_avatar {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.nav_data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    vertical-align: middle;
+}
+
+.nav_nickname {
+    display: block;
+    color: #604D4D;
+    font-family: Montserrat;
+    font-size: 12px;
+    height: 22px;
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nav_ID {
+    display: block;
+    color: #604D4D;
+    font-family: Montserrat;
+    font-size: 12px;
+    height: 22px;
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nav_profile_button {
+    padding: 6px 3px;
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+    margin-left: 30px;
+}
+
+.main {
+    display: flex;
+    height: max-content;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    background: #BDD4EA;
+}
+
+.nav_menu {
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -1.28px;
+    padding: 6px 0 6px 36px;
+}
+
+.nav_submenu {
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 18px 0 18px 18px;
+}
+
+.nav-box {
+    padding: 18px 0 18px 24px;
+    align-items: center;
+}
+
+.nav_logo {
+    display: inline-flex;
+    justify-content: center;
+    padding: 6px;
+}
+
+.nav_data {
+    display: inline-flex;
+    justify-content: center;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.nav_dash {
+    display: inline-flex;
+    float: right;
+    padding: 6px 12px 0 6px;
+    color: #444;
+    text-align: center;
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 900;
+}
+
+.body {
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+}
+
+.body_title_box {
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.body_title {
+    display: flex;
+    width: 180px;
+    height: 50px;
+    margin: 50px 10px 0 170px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #444;
+    font-family: Krub;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.body_subtitle {
+    display: flex;
+
+    width: 115px;
+    height: 23px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #959595;
+    font-family: Krub;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.body_manage_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    height: 100%;
+}
+
+.manage_box {
+    width: 80%;
+    height: max-content;
+    margin: 0 24px 24px 24px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+}
+
+.manage_box_header {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+}
+
+.doctor_patient_name {
+    display: flex;
+    width: 20%;
+    margin: 24px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #37352F;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.manage_box_calandar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    height: 40px;
+    margin: 24px 36px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    background: rgba(228, 228, 228, 0.40);
+}
+.manage_box_container {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+
+}
+.manage_box_title {
+    width: 40%;
+    padding: 5px;
+    margin-left: 10px;
+    flex-shrink: 0;
+    color: #737373;
+    font-family: Helvetica;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.manage_box_data {
+    width: 40%;
+    padding: 5px;
+    flex-shrink: 0;
+    color: #B2B1B1;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.manage_box_divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.23) 0%, rgba(0, 0, 0, 0.23) 100%), rgba(0, 0, 0, 0.23);
+}
+
+.manage_box_body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+}
+
+.manage_box_chat {
+    display: flex;
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+.manage_box_image {
+    width: 40px;
+    height: 40px;
+    margin: 0 12px;
+    flex-shrink: 0;
+}
+
+.manage_box_chat_data {
+    display: flex;
+    margin: 0 12px;
+    flex-direction: column;
+    width: 100%;
+}
+.manage_box_chat_header {
+    display: flex;
+    flex-direction: row;
+}
+.manage_box_chat_data_name {
+    display: flex;
+    color: #37352F;
+    padding: 3px;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.manage_box_chat_data_timestamp {
+    display: flex;
+    padding: 3px;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.50);
+    font-family: Montserrat;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.manage_box_chat_data_chat {
+    display: flex;
+    width: 95%;
+    padding: 3px;
+    color: rgba(0, 0, 0, 0.55);
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

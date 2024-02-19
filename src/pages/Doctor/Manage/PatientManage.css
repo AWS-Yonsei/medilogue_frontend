@@ -1,0 +1,411 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    height: 10%;
+}
+
+.logos {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 12.5rem;
+    height: 2.8rem;
+}
+
+.upper-nav {
+    display: flex;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
+    background: #BDD4EA;
+}
+
+.nav_searchbox {
+    display: inline-flex;
+    border-radius: 50px;
+    background: #FCFCFC;
+    width: 40%;
+    margin: auto;
+    height: 56px;
+    flex-shrink: 0;
+}
+
+.search_logo {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+.nav_search_bar {
+    display: inline-flex;
+    height: 90%;
+    width: 80%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 12px;
+}
+
+.nav_status {
+    width: 10%;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.nav_button {
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+}
+
+.nav_off {
+    display: inline-flex;
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 12px;
+    letter-spacing: -0.54px;
+}
+
+.nav_live {
+    display: inline-flex;
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 12px;
+    letter-spacing: -0.54px;
+}
+
+.nav_language_box {
+    display: inline-flex;
+    padding: 17px 30px 16px 43px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 23px;
+    border-radius: 50px;
+    border: 1px solid rgba(72, 74, 79, 0.73);
+}
+
+.nav_language_select {
+    color: #484A4F;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+}
+
+.nav_notice {
+    width: 10%;
+    padding: 12px;
+    margin: auto;
+    flex-shrink: 0;
+}
+
+.nav_notice_button {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    flex-shrink: 0;
+}
+
+.modal_notice {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 500px;
+    height: 200px;
+}
+
+.nav_login {
+    display: inline-flex;
+    width: 20%;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.nav_avatar {
+    display: flex;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.nav_data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    vertical-align: middle;
+}
+
+.nav_nickname {
+    display: block;
+    color: #604D4D;
+    font-family: Montserrat;
+    font-size: 12px;
+    height: 22px;
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nav_ID {
+    display: block;
+    color: #604D4D;
+    font-family: Montserrat;
+    font-size: 12px;
+    height: 22px;
+    float: left;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.nav_profile_button {
+    padding: 6px 3px;
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+    margin-left: 30px;
+}
+
+.main {
+    display: flex;
+    height: 90%;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    background: #BDD4EA;
+}
+
+.nav_menu {
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -1.28px;
+    padding: 6px 0 6px 36px;
+}
+
+.nav_submenu {
+    color: #484A4F;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 18px 0 18px 18px;
+}
+
+.nav-box {
+    padding: 18px 0 18px 24px;
+    align-items: center;
+}
+
+.nav_logo {
+    display: inline-flex;
+    justify-content: center;
+    padding: 6px;
+}
+
+.nav_data {
+    display: inline-flex;
+    justify-content: center;
+    padding: 6px;
+    flex-shrink: 0;
+}
+
+.nav_dash {
+    display: inline-flex;
+    float: right;
+    padding: 6px 12px 0 6px;
+    color: #444;
+    text-align: center;
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 900;
+}
+
+.body {
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+}
+
+.body_title {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 60px;  
+    flex-shrink: 0;
+    color: #444;
+    font-family: Krub;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.body_table_container {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.body_table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 19px;
+    background: rgba(178, 197, 225, 0.93);
+}
+
+.patient_box {
+    display: flex;
+    align-items: center;
+    height: 15%;
+    flex-shrink: 0;
+    border-radius: 1rem;
+    background: #FFFEF9;
+    margin: 12px 24px;
+}
+
+.patient_image {
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    margin-left: 12px;
+    flex-shrink: 0;
+    border-radius: 6.25rem;
+    border: 1px solid rgba(36, 36, 36, 0.40);
+    background: lightgray 50% / cover no-repeat;
+}
+
+.patient_data_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 70%;
+    margin-left: 5%;
+}
+
+.patient_name {
+    display: flex;
+    width: 8rem;
+    height: 2rem;
+    margin-bottom: 12px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: Krub;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.patient_bar {
+    display: flex;
+    width: 80%;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    border-radius: 2.1875rem;
+    background: #D9D9D9;
+}
+
+.patient_bar_status {
+    display: flex;
+    float: inline-start;
+    width: 70%;
+    justify-content: center;
+    height: 2.1875rem;
+    flex-shrink: 0;
+    border-radius: 2.1875rem;
+    background: #D5BBEE;
+}
+
+.patient_bar_data {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.50);
+    -webkit-text-stroke-width: 1;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.10);
+    font-family: Krub;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.patient_button_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15%;
+    margin: 8px;
+}
+
+.patient_button {
+    display: flex;
+    width: 80px;
+    height: 35px;
+    padding: 5px;
+    margin: 5px;
+    gap: 0.53rem;
+    flex-shrink: 0;
+    border-radius: 0.53rem;
+    background: #005F95;
+}
+
+.patient_button_data {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Krub;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
