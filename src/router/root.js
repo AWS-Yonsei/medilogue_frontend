@@ -4,8 +4,10 @@ const { createBrowserRouter } = require("react-router-dom");
 const Loading = <div>Loading...</div>;
 const Home = lazy(() => import("../pages/Home/Home"));
 const Login = lazy(() => import("../pages/Login/Login"));
-const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"));
+const DoctorPortal = lazy(() => import("../pages/ChatBot/DoctorPortal"));
+const PatientPortal = lazy(() => import("../pages/ChatBot/PatientPortal"));
 const PatientManage = lazy(() => import("../pages/Patient/PatientManage"));
+const PatientConsult = lazy(() => import("../pages/Patient_Consult/PatientConsult"));
 const Quiz = lazy(() => import("../pages/Main/Quiz"));
 const QuizDetail = lazy(() => import("../pages/Main/QuizDetail"));
 const PatientRecord = lazy(() => import("../pages/Patient/PatientRecord"));
@@ -30,10 +32,18 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "chatportal",
+    path: "doctorportal",
     element: (
       <Suspense fallback={Loading}>
-        <ChatPortal />
+        <DoctorPortal />
+      </Suspense>
+    ),
+  },
+  {
+    path: "patientportal",
+    element: (
+      <Suspense fallback={Loading}>
+        <PatientPortal />
       </Suspense>
     ),
   },
@@ -42,6 +52,14 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={Loading}>
         <PatientManage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "patient_consult",
+    element: (
+      <Suspense fallback={Loading}>
+        <PatientConsult />
       </Suspense>
     ),
   },

@@ -13,10 +13,13 @@ const Menu = () => {
                     <Link to={'/login'}>Sign In</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/chatportal'}>Chat</Link>
+                    <Link to={'/patientportal'}>Patient</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/quiz'}>Home</Link>
+                    <Link to={'/doctorportal'}>Doctor</Link>
+                </li>
+                <li className="list_menu">
+                    <Link to={'/quiz'}>Quiz</Link>
                 </li>
                 <li className="list_menu">
                     <Link to={'/about'}>About Us</Link>
