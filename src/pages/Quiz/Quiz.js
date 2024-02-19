@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import MenuLayout from "../../layouts/MenuLayout";
+import QuizMenuLayout from "./QuizMenuLayout";
 import {
   TitleContainer,
   TitleIcon,
@@ -82,7 +82,7 @@ const Quiz = () => {
   const getQuizList = () => {};
 
   return (
-    <MenuLayout>
+    <QuizMenuLayout>
       <TitleContainer>
         <TitleIcon src={titleImg} />
         <Title>의학 퀴즈 목록</Title>
@@ -140,7 +140,7 @@ const Quiz = () => {
           </QuizItem>
         ))}
       </QuizItemContainer>
-    </MenuLayout>
+    </QuizMenuLayout>
   );
 };
 export default Quiz;

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import "../pages/Home/Home.css"
-import logo from "../components/logo.png";
+import "./Menu.css";
+import logo from "../../components/logo.png";
 
 const Menu = () => {
     return (
         <div className="navbar">
-            <div className="logos">
+            <div className="logo_menu">
                 <img class="logo" src={logo}></img>
             </div>
             <ul className="navbar_list">

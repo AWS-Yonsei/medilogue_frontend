@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MenuLayout from "../../layouts/MenuLayout";
+import QuizMenuLayout from "./QuizMenuLayout";
 import {
   TitleContainer,
   Title,
@@ -49,7 +49,7 @@ const Quiz = () => {
   ]);
 
   return (
-    <MenuLayout>
+    <QuizMenuLayout>
       <TitleContainer>
         <Title>{quizInfo.title}</Title>
         <QuizNum>{quizInfo.quizNum}개 문제</QuizNum>
@@ -84,7 +84,7 @@ const Quiz = () => {
       {questionList.map((item) => (
         <QuizItem {...item} />
       ))}
-    </MenuLayout>
+    </QuizMenuLayout>
   );
 };
 export default Quiz;

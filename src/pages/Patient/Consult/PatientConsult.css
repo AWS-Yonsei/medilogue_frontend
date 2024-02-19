@@ -196,6 +196,7 @@ html {
 
 .main {
     display: flex;
+    height: max-content;
 }
 
 .side-nav {

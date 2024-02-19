@@ -1,6 +1,6 @@
-import Menu from "../../layouts/Menu.js"
+import Menu from "../../layouts/Menu/Menu.js"
 import { Link } from "react-router-dom";
-import logo from "../../components/logo.png";
+
 import image_Left_Doctor from "../../components/Left_Doctor.png";
 import image_Right_Doctor from "../../components/Right_Doctor.png";
 import bottomshowleft from "../../components/bottom_left.png";
