@@ -16,9 +16,8 @@ html {
 }
 
 .logo {
-    margin: 0 auto;
     width: 12.5rem;
-    height: 2.74388rem;
+    height: 2.8rem;
 }
 
 .upper-nav {
@@ -413,11 +412,13 @@ html {
     width: 100%;
     height: 12%;
 }
+
 .body_table_data_divider {
     width: 100%;
     height: 1px;
-    background:rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.25);
 }
+
 .body_table_data_num {
     padding: 5px;
     color: #000;

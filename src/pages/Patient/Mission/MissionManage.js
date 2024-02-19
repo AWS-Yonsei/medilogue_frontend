@@ -1,4 +1,4 @@
-import MissionLayout from "../../layouts/MissionLayout";
+import MissionLayout from "./MissionManageLayout";
 
 const MissionManage = () => {
     return(
