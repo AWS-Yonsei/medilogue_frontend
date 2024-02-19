@@ -46,7 +46,6 @@ const PatientManageLayout = () => {
             <div className="main">
                 <PortalDoctorSideBar>
                 </PortalDoctorSideBar>
-
                 <div className="body">
                     <div className="body_title">
                         관리중인 환자 진도
