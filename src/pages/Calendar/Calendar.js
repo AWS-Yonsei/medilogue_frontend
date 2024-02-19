@@ -1,12 +1,12 @@
-import Calendar from "../../layouts/CalendarLayout";
+import CalendarLayout from "./CalendarLayout";
 
-const ChatPortal = () => {
+
+const Calendar = () => {
     return(
-        <Calendar>
+        <CalendarLayout>
             
-        </Calendar>
-        
+        </CalendarLayout>  
     );
 }
 
-export default ChatPortal;
+export default Calendar;

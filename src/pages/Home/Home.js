@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HomeLayout from "../../layouts/HomeLayout";
+import HomeLayout from "./HomeLayout";
 
 const Home = () => {
     return(

@@ -9,9 +9,10 @@ html {
     height: 10%;
 }
 
-.logos {
+.logo_menu {
     display: flex;
     width: 200px;
+    margin-left: 30px;
     justify-content: center;
     align-items: center;
 }
@@ -370,15 +371,14 @@ html {
 
 .Bottom_show_docs {
     position: relative;
-    left: 8%;
-    bottom: 4%;
+    left: 20%;
     text-align: center;
-    width: 250px;
-    height: 65px;
+    width: 169px;
+    height: 58px;
     flex-shrink: 0;
     color: #6B6868;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;

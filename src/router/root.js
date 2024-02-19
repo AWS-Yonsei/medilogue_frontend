@@ -4,6 +4,7 @@ const { createBrowserRouter } = require("react-router-dom");
 const Loading = <div>Loading...</div>;
 const Home = lazy(() => import("../pages/Home/Home"));
 const Login = lazy(() => import("../pages/Login/Login"));
+<<<<<<< HEAD
 const DoctorPortal = lazy(() => import("../pages/ChatBot/DoctorPortal"));
 const PatientPortal = lazy(() => import("../pages/ChatBot/PatientPortal"));
 const ChatPortal = lazy(() => import("../pages/ChatBot/ChatPortal"));
@@ -13,6 +14,17 @@ const PatientConsult = lazy(() => import("../pages/Patient_Consult/PatientConsul
 const QuizSelect = lazy(() => import("../pages/Main/QuizSelect"));
 const QuizDetail = lazy(() => import("../pages/Main/QuizDetail"));
 const PatientRecord = lazy(() => import("../pages/Patient/PatientRecord"));
+=======
+const DoctorPortal = lazy(() => import("../pages/Doctor/Portal/DoctorPortal"));
+const PatientPortal = lazy(() => import("../pages/Patient/Portal/PatientPortal"));
+const ChatPortal = lazy(() => import("../pages/Chat/ChatPortal"));
+const PatientManage = lazy(() => import("../pages/Doctor/Manage/PatientManage"));
+const MissionManage = lazy(() => import("../pages/Patient/Mission/MissionManage"));
+const PatientConsult = lazy(() => import("../pages/Patient/Consult/PatientConsult"));
+const Quiz = lazy(() => import("../pages/Quiz/Quiz"));
+const QuizDetail = lazy(() => import("../pages/Quiz/QuizDetail"));
+const PatientRecord = lazy(() => import("../pages/Patient/Record/PatientRecord"));
+>>>>>>> 2d2a968121906170192b68966b10d83531f73fcf
 const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
 const Solution = lazy(() => import("../pages/Solution/Solution"));
 const Quiz = lazy(() => import("../pages/Main/GameScreen"));
@@ -35,7 +47,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "doctorportal",
+    path: "doctor_portal",
     element: (
       <Suspense fallback={Loading}>
         <DoctorPortal />
@@ -43,7 +55,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "patientportal",
+    path: "patient_portal",
     element: (
       <Suspense fallback={Loading}>
         <PatientPortal />
@@ -51,7 +63,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "chatportal",
+    path: "chat_portal",
     element: (
       <Suspense fallback={Loading}>
         <ChatPortal />
@@ -115,7 +127,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "calendar/:date",
+    path: "calendar",
     element: (
       <Suspense fallback={Loading}>
         <Calendar />
