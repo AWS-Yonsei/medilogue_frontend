@@ -1,4 +1,4 @@
-import PatientConsultLayout from "../../layouts/PatientConsultLayout";
+import PatientConsultLayout from "./PatientConsultLayout";
 
 const PatientConsult = () => {
     return(
