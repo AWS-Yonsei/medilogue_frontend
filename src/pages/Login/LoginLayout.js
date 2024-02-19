@@ -26,7 +26,9 @@ const LoginLayout = () => {
         e.preventDefault();
         //form.current.validateAll();
         UserService.login(uid, password).then(
-        () => {
+        (data) => {
+            console.log(data);
+            localStorage.setItem('accessToken', data.token);
             navigate("/");
             window.location.reload();
         },

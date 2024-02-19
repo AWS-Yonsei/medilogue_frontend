@@ -11,8 +11,9 @@ export const login = async ( uid, password ) => {
   return axios
   .post(API_URL+'/login', { uid: uid, password: password })
   .then((response) => {
-    console.log(response);
-    return response;
+    console.log(response.data.token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+    return response.data;
   });
 }
 
