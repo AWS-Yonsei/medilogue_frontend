@@ -6,7 +6,8 @@ const Home = lazy(() => import("../pages/Home/Home"));
 const Login = lazy(() => import("../pages/Login/Login"));
 const DoctorPortal = lazy(() => import("../pages/Doctor/Portal/DoctorPortal"));
 const PatientPortal = lazy(() => import("../pages/Patient/Portal/PatientPortal"));
-const ChatPortal = lazy(() => import("../pages/Chat/ChatPortal"));
+const ChatPortal = lazy(() => import("../pages/Chat/Portal/ChatPortal"));
+const ChatRoom = lazy(() => import("../pages/Chat/Chatroom/ChatRoom"));
 const PatientManage = lazy(() => import("../pages/Doctor/Manage/PatientManage"));
 const MissionManage = lazy(() => import("../pages/Patient/Mission/MissionManage"));
 const PatientConsult = lazy(() => import("../pages/Patient/Consult/PatientConsult"));
@@ -55,6 +56,14 @@ const root = createBrowserRouter([
     element: (
       <Suspense fallback={Loading}>
         <ChatPortal />
+      </Suspense>
+    ),
+  },
+  {
+    path: "chat_room",
+    element: (
+      <Suspense fallback={Loading}>
+        <ChatRoom />
       </Suspense>
     ),
   },

@@ -1,0 +1,127 @@
+.chatroom_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.chatroom_body {
+    display: flex;
+    width: 100%;
+    height: 92%;
+}
+
+.chatroom_face {
+    display: flex;
+    width: 70%;
+    height: 100%;
+}
+
+.chatroom_face_data {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.chatroom_chat {
+    display: flex;
+    width: 30%;
+    height: 97%;
+    margin: 12px;
+    border: 1px solid #C4C4C4;
+    background: #FFFEF9;
+    ;
+}
+
+.chatroom_topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 8%;
+    background: #354657;
+}
+
+.chatroom_topbar_name {
+    display: flex;
+    margin-left: 24px;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.chatroom_topbar_close {
+    display: flex;
+    margin-right: 24px;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.chatroom_bottom {
+    display: flex;
+    width: 100%;
+    height: 8%;
+    background: #04346C;
+}
+
+.chatroom_bottom_leftbox {
+    display: flex;
+    width: 20%;
+    height: 100%;
+    align-items: center;
+}
+
+.chatroom_bottom_centerbox {
+    display: flex;
+    width: 55%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.chatroom_bottom_rightbox {
+    display: flex;
+    width: 25%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.chatroom_bottom_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.chatroom_bottom_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+}
+
+.chatroom_bottom_icon_big {
+    width: 100px;
+    height: 60px;
+    flex-shrink: 0;
+    padding: 5px;
+}
+
+.chatroom_bottom_text {
+    color: #FFF;
+    padding: 5px;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

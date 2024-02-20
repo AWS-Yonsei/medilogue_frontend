@@ -1,31 +1,47 @@
 import "./ChatPortal.css"
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import logo from "../../components/logo.png";
-import doctor_imoction from "../../components/doctor_imo.png";
-import power_button from "../../components/power_button.png";
-import Appointment from "../../components/menu_appointment.png";
-import Calendar from "../../components/menu_calendar.png";
-import Chatbot from "../../components/menu_chatbot.png";
-import Homepage from "../../components/menu_homepage.png";
-import Mypage from "../../components/menu_mypage.png";
-import Payments from "../../components/menu_payments.png";
-import Record from "../../components/menu_record.png";
-import Filter from "../../components/filter.png";
-import Videocall from "../../components/video_call.png";
-import Nav_Profile from "../../components/avatar.png"
+import styled from 'styled-components'
+import logo from "../../../components/logo.png";
+import doctor_imoction from "../../../components/doctor_imo.png";
+import power_button from "../../../components/power_button.png";
+import Appointment from "../../../components/menu_appointment.png";
+import Calendar from "../../../components/menu_calendar.png";
+import Chatbot from "../../../components/menu_chatbot.png";
+import Homepage from "../../../components/menu_homepage.png";
+import Mypage from "../../../components/menu_mypage.png";
+import Payments from "../../../components/menu_payments.png";
+import Record from "../../../components/menu_record.png";
+import Filter from "../../../components/filter.png";
+import Videocall from "../../../components/video_call.png";
+import Nav_Profile from "../../../components/avatar.png";
+import CloseButton from '../../../components/closebutton.png';
+import VideoButton from '../../../components/video.png';
+import MicrophoneButton from '../../../components/microphone.png';
+import SettingButton from '../../../components/settings.png';
+import OptionButton from '../../../components/option.png';
+import Avatar from "../../../components/placeholder.jpg";
+import Camera from "../../../components/camera.png";
+import Send from "../../../components/send.png";
 
 const ChatPortalLayout = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const modal_notice = {
+    const customStyles = {
         content: {
+            background: 'rgba(255, 255, 255, 0.5)',
+            width: '820px',
+            height: '580px',
+            padding: '0px',
             top: '50%',
             left: '50%',
             right: 'auto',
             bottom: 'auto',
             marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
+            transform: 'translate(-50%, -50%)'
         },
+        overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0)'
+        }
     };
     return (
         <>
@@ -144,22 +160,57 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav_bottom">
                             <img class="nav_video_logo" src={Videocall} />
-                            <div className="nav_video_call" onClick={() => setModalIsOpen(true)}>
+                            <button className="nav_video_call" onClick={() => setModalIsOpen(true)}>
                                 Video Call
-                            </div>
-                            <Modal style="modal_notice" isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                            </button>
+                            <Modal style={customStyles} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+                                <div className="modal_container">
+                                    <div className="modal_topbar">
+                                        <div className="modal_topbar_name"> XXX과 XXX의사 </div>
+                                        <img src={CloseButton} className="modal_closebutton" onClick={() => setModalIsOpen(false)} />
+                                    </div>
+                                    <div className="modal_body">
+                                        <div className="modal_body_profile_container">
+                                            <div className="modal_body_profile_box">
+                                                <div className="modal_body_profile_main">
+                                                    <div>
+                                                        <img src={Avatar} className="modal_body_profile_image" />
+                                                    </div>
+                                                    <div className="modal_body_profile_name">
+                                                        User Name
+                                                    </div>
+                                                </div>
+                                                <div className="modal_body_profile_bottom">
+                                                    <button><img class="modal_body_button" src={MicrophoneButton} /> </button>
+                                                    <button><img class="modal_body_button" src={VideoButton} /> </button>
+                                                    <button><img class="modal_body_button" src={SettingButton} /> </button>
+                                                    <button><img class="modal_body_button" src={OptionButton} /> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="modal_body_bottom_button_box">
+                                            <button><a href="/chat_room" className="modal_body_bottom_button_green">Join</a></button>
+                                            <button><div className="modal_body_bottom_button_red" onClick={() => setModalIsOpen(false)}>Leave</div></button>
+                                        </div>
+
+
+                                    </div>
+                                </div>
 
                             </Modal>
+
                         </div>
                     </div>
                 </div>
                 <div className="body">
                     <div className="chat_room_box">
-                    
+
                     </div>
-                    <div className="chat_send_box">
+                    <div className="chat_send_square_container">
                         <div className="chat_send_square">
-                            <textarea className="chat_send_square_text" placeholder="Type your message" maxLength={400} ></textarea>
+                            <input className="chat_send_square_text" placeholder="Type your message" maxLength={400} />
+                            <button><img class="chat_send_square_logo" src={Camera} /></button>
+                            <button><img class="chat_send_square_logo" src={Send} /></button>
                         </div>
                     </div>
                 </div>

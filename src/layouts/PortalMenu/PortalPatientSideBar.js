@@ -1,7 +1,4 @@
-import { Link } from "react-router-dom";
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import Modal from 'react-modal';
 import "./PortalMenu.css";
 import Appointment from "../../components/menu_appointment.png"
 import Calendar from "../../components/menu_calendar.png"
@@ -13,48 +10,6 @@ import Payments from "../../components/menu_payments.png"
 import Record from "../../components/menu_record.png"
 
 const PortalPatientSideBar = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-
-    const modal_notice = {
-        content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-        },
-    };
-    const ToggleContainer = styled.div`
-        position: relative;
-        > .toggle-container {
-            width: 50px;
-            height: 25px;
-            border-radius: 30px;
-            background-color: rgb(233,233,234);}
-        > .toggle--checked {
-            background-color: rgb(0,200,102);
-            transition : 0.5s
-        }
-        > .toggle-circle {
-            position: absolute;
-            top: 1px;
-            left: 1px;
-            width: 22px;
-            height: 23px;
-            border-radius: 50%;
-            background-color: rgb(255,254,255);
-            transition : 0.5s
-        } >.toggle--checked {
-            left: 27px;
-            transition : 0.5s
-        }`
-        ;
-    const [isOn, setisOn] = useState(false);
-    const toggleHandler = () => {
-        // isOn의 상태를 변경하는 메소드를 구현
-        setisOn(!isOn)
-    };
     return (
         <>
             <div className="side-nav">
