@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MenuLayout from "../../layouts/MenuLayout";
@@ -29,6 +30,7 @@ import arrowIcon from "../../components/quiz/arrow.png";
 import clockIcon from "../../components/quiz/clock.png";
 import sampleQuizIcon from "../../components/quiz/sample_icon.png";
 
+const API_URL = 'http://localhost:8080'
 const Quiz = () => {
   const navigate = useNavigate();
 
@@ -48,6 +50,23 @@ const Quiz = () => {
       value: "3",
     },
   ]);
+  /*
+  const [quizList, setQuizList] = useState([]);
+
+const fetchData = async () => {
+  try {
+    const response = await axios.get(API_URL + '/quiz/');
+    setQuizList([...quizList, ...response.data]);
+    console.log(quizList);
+    console.log('이거라도');
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+
+  fetchData();
+*/
+
   const [quizList, setQuizList] = useState([
     {
       quizNo: 1,
@@ -116,7 +135,7 @@ const Quiz = () => {
         {quizList.map((item) => (
           <QuizItem
             onClick={() => {
-              navigate(`${item.quizNo}`);
+              navigate(`${item.category}`);
             }}
           >
             <UpperContainer>
@@ -125,7 +144,7 @@ const Quiz = () => {
                   <QuizTitle>{item.title}</QuizTitle>
                   <QuizNum>
                     <img src={clockIcon} width={10} alt="clock" />
-                    <div>{item.quizNum}개 문제</div>
+                    <div>{item.quiz_cnt}개 문제</div>
                   </QuizNum>
                 </QuizInfo>
                 <QuizIcon src={item.iconPath} />
@@ -134,8 +153,8 @@ const Quiz = () => {
             </UpperContainer>
 
             <DivideLine />
-            <QuizStatus $isTaken={item.isTaken}>
-              {item.isTaken ? "피드백" : "미응시"}
+            <QuizStatus $isTaken={item.take_test}>
+              {item.take_test ? "피드백" : "미응시"}
             </QuizStatus>
           </QuizItem>
         ))}
