@@ -22,7 +22,7 @@ const CalendarLayout = ({}) => {
   const [patientID, setPatientID] = useState('');
   
   useEffect(() => {
-    getData();
+    //getData();
     const selectedDateString = selectedDate.toDateString();
     if (memos[selectedDateString]) {
       setMemoList(memos[selectedDateString]);
@@ -30,7 +30,7 @@ const CalendarLayout = ({}) => {
       setMemoList([]);
     }
   }, [selectedDate, memos]);
-
+  /*
   const getData = async () => {
     try{
       const formattedDate = `${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`;
@@ -53,9 +53,9 @@ const CalendarLayout = ({}) => {
     console.error('Error while fetching data:', error);
   }
 };
-
+*/
   
-  const addMemo = async () => {
+  const addMemo2 = async () => {
     const Time = `T${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}:00Z`;
     const Day = `${selectedDate.getFullYear()}-${(selectedDate.getMonth()+1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`
     const newMemo = {
@@ -79,16 +79,54 @@ const CalendarLayout = ({}) => {
     }
   };
   
-  const renderMemoList = () => {
-    return memoList.map((memo, index) => (
-      <div key={index} className="memo-item" >
-        <p className="start-time">{memo.startTime}</p>
-        <div className="memo-content" style={{ backgroundColor: memo.color }}>
-          <p style={{ whiteSpace: 'pre-line' }}>{`환자 이름: ${memo.patientName}\n환자 ID: ${memo.patientID}`}</p>
-        </div>
-      </div>
-    ));
+  const addMemo = () => {
+    const startTime = `${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}`;
+    const newMemo = {
+      startTime,
+      patientName,
+      patientID,
+    };
+
+    const updatedMemoList = [...memoList, newMemo];
+    const selectedDateString = selectedDate.toDateString();
+    memos[selectedDateString] = updatedMemoList;
+    setMemoList(updatedMemoList);
+    setShowMemoModal(false);
+    setStartTimeHour('');
+    setStartTimeMinute('');
+    setPatientName('');
+    setPatientID('');
   };
+
+  const renderMemoList = () => {
+    return memoList.map((memo, index) => {
+      let backgroundColorClass;
+      if (index%3 === 0) {
+        backgroundColorClass = "bg-emerald-400 bg-opacity-30";
+      } else if (index%3 === 1) {
+        backgroundColorClass = "bg-orange-50";
+      } else if (index%3 === 2) {
+        backgroundColorClass = "bg-red-600 bg-opacity-20";
+      }
+  
+      return (
+        <div key={index} className={`gap-4 justify-between mt-8 `}>
+          <div className="time">
+            {memo.startTime}
+          </div>
+          <div className={` flex gap-3 justify-between text-base font-medium tracking-tight rounded text-stone-900 ${backgroundColorClass}`}>
+            <div className="bg-teal-600 rounded h-[76px] w-[5px]" />
+            <div className="flex_col1 my-auto">
+              <div className="text-black">{`환자 이름: ${memo.patientName}`}</div>
+              <div className="mt_4 text-black">{`진료 내용: ${memo.patientID}`}</div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+  
+  
 
   const handleAddMemoClick = () => {
     setShowMemoModal(true);
@@ -100,8 +138,13 @@ const CalendarLayout = ({}) => {
     const memo = memos[dateString];
     if (memo) {
       return (
-        <div className="memo-content">
-          <p className='memo-count'>{`일정: 개`}</p>
+        <div className="memo-list">
+          {memoList.map((memo, index) => (
+            <div key={index} className="memo-item">
+              {index === 0 && <br />} 
+              <div>{`진료: ${memo.startTime}`}</div>
+            </div>
+          ))}
         </div>
       );
     }
@@ -227,7 +270,7 @@ const CalendarLayout = ({}) => {
               <div className="flex_col pt-4 pb-12 mx-auto w-full bg-white rounded-md border border-solid border-black border-opacity-30 max-md:mt-2.5">
                 <div className="flex_col px-4">
                   <div className="flex gap-5 justify-between pr-6 whitespace-nowrap max-md:pr-5">
-                    <div className="flex_col">
+                    <div className="calendar-container">
                       <div className="text-base text-neutral-600">SelectedDay</div>
                       <div className="mt-5 text-xl font-medium text-neutral-900">
                         {selectedDate.toDateString()}
@@ -239,55 +282,39 @@ const CalendarLayout = ({}) => {
                       className="self-start aspect-square w-[38px]"
                     />
                   </div>
-                  <div className="flex gap-4 justify-between mt-16 max-md:mt-10">
-                    <div className="time">
-                      08:00 am
-                    </div>
-                    <div className="flex gap-3 justify-between text-base font-medium tracking-tight rounded bg-emerald-400 bg-opacity-30 text-stone-900">
-                      <div className="bg-teal-600 rounded h-[76px] w-[5px]" />
-                      <div className="flex_col1 my-auto">
-                        <div>환자 이름: ㄱㅇㅁ</div>
-                        <div className="mt_4">환자 ID: 123456</div>
+                  <div className="gap-4 justify-between mt-16 max-md:mt-10">
+                    {renderMemoList()}
+                    {!showMemoModal && (
+                      <button onClick={handleAddMemoClick}>메모추가</button>
+                    )}
+                    {showMemoModal && (
+                      <div className="modal">
+
+                        <label>진료 시간:</label>
+                        <div>
+                          <select value={startTimeHour} onChange={(e) => setStartTimeHour(e.target.value)}>
+                            {[...Array(25).keys()].map((hour) => (
+                              <option key={hour} value={hour.toString().padStart(2, '0')}>
+                                {hour.toString().padStart(2, '0')}
+                              </option>
+                            ))}
+                          </select>
+                          시
+                          <select value={startTimeMinute} onChange={(e) => setStartTimeMinute(e.target.value)}>
+                            <option value="00">00</option>
+                            <option value="30">30</option>
+                          </select>
+                          분
+                        </div>
+                        <label>환자 이름:</label>
+                        <textarea rows="1" cols="5" value={patientName} onChange={(e) => setPatientName(e.target.value)} /><br/>
+                        <label>진료 내용:</label>
+                        <textarea rows="1" cols="2" value={patientID} onChange={(e) => setPatientID(e.target.value)} /><br/>
+                        <button onClick={addMemo}>추가</button>
+                        <button onClick={() => setShowMemoModal(false)}>취소</button>
                       </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 justify-between mt-8">
-                    <div className="time">
-                      10:45 am
-                    </div>
-                    <div className="flex gap-2 justify-between text-base font-medium tracking-tight bg-orange-50 rounded text-stone-900">
-                      <div className="bg-orange-400 rounded h-[76px] w-[5px]" />
-                      <div className="flex_col1 my-auto">
-                        <div>환자 이름: ㄱㅇㅁ</div>
-                        <div className="mt_4">환자 ID: 123456</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 justify-between mt-8 whitespace-nowrap">
-                    <div className="grow self-start text-sm text-zinc-700">
-                      12:00 am
-                    </div>
-                    <div className="flex_col1 items-start py-4 pr-20 pl-4 text-base font-medium tracking-tight rounded bg-red-600 bg-opacity-20 text-stone-900 max-md:pr-5">
-                      <div>환자 이름: ㄱㅇㅁ</div>
-                      <div className="mt_4">환자 ID: 123456</div>
-                    </div>
-                  </div>
-                  <div className="mt-7 text-sm text-zinc-700">02:40 pm</div>
-                  <div className="self-center text-base font-medium tracking-tight whitespace-nowrap text-stone-900">
-                    환자 이름: ㄱㅇㅁ
-                  </div>
-                  <div className="self-center mt_4 text-base font-medium tracking-tight whitespace-nowrap text-stone-900">
-                    환자 ID: 123456
-                  </div>
+                    )}
                 </div>
-                <div className="flex gap-4 self-center mt-11 max-w-full whitespace-nowrap w-[364px] max-md:mt-10">
-                  <div className="grow self-start text-sm text-zinc-700">
-                    04:00 pm
-                  </div>
-                  <div className="flex_col1 items-start py-4 pr-20 pl-5 text-base font-medium tracking-tight rounded bg-sky-600 bg-opacity-20 text-stone-900 max-md:px-5">
-                    <div>환자 이름: ㄱㅇㅁ</div>
-                    <div className="mt_4">환자 ID: 123456</div>
-                  </div>
                 </div>
               </div>
             </div>

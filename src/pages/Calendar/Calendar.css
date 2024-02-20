@@ -17,7 +17,10 @@
     flex: 1 1 0%;
 }
 
+.calendar_memo{
+  display: block;
 
+}
 .time{
     flex-grow: 1; 
     align-self: flex-start;
@@ -27,6 +30,11 @@
     color: rgb(63 63 70);
 }
 
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .calendar-app {
     display: flex;
     justify-content: center;
