@@ -6,7 +6,9 @@ import QRCode from "../../components/bi_qr-code-scan.png"
 import UserService from "../../utils/api/user.js"
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
+const API_URL = 'http://localhost:8080'
 const LoginLayout = () => {
     const [uid, setUid] = useState("");
     const [password, setPassword] = useState("");
@@ -25,15 +27,19 @@ const LoginLayout = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         //form.current.validateAll();
-        UserService.login(uid, password).then(
-        () => {
-            navigate("/");
-            window.location.reload();
-        },
-        (error) => {
-            console.log(error);
-        }
-        );
+        const userData = {
+            uid: uid,
+            password: password
+        };
+
+        axios.post(API_URL+"/login", userData)
+            .then(() => {
+                navigate("/");
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
@@ -63,7 +69,7 @@ const LoginLayout = () => {
                     <br />
                     <div className={"inputContainer"}>
                         <input
-                            type="password"
+                            type="text"
                             name="password"
                             value={password}
                             onChange={onChangePassword}
