@@ -20,23 +20,17 @@ const CalendarLayout = ({}) => {
   const [startTimeMinute, setStartTimeMinute] = useState('');
   const [patientName, setPatientName] = useState('');
   const [patientID, setPatientID] = useState('');
-  
-  useEffect(() => {
-    //getData();
-    const selectedDateString = selectedDate.toDateString();
-    if (memos[selectedDateString]) {
-      setMemoList(memos[selectedDateString]);
-    } else {
-      setMemoList([]);
-    }
-  }, [selectedDate, memos]);
-  /*
+
   const getData = async () => {
     try{
+      const token = localStorage.getItem('accessToken');
       const formattedDate = `${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`;
-      const response = await axios.get(`${API_URL}/calendar/${formattedDate}`);
+      const response = await axios.get(`${API_URL}/calendar/${formattedDate}`, {headers: {Authorization: `Bearer ${token}`}});
       const { schedules } = response.data;
+      console.log(schedules);
       schedules.forEach(schedule => {
+        console.log(schedule);
+        //수정이 필요함
         const startTime = new Date(schedule.startTime);
         const startTimeHour = startTime.getHours().toString().padStart(2, '0');
         const startTimeMinute = startTime.getMinutes().toString().padStart(2, '0');
@@ -46,16 +40,28 @@ const CalendarLayout = ({}) => {
         setPatientID(schedule.content);
         setPatientName(schedule.attendee);
 
-        addMemo();
+        addMemo(); // addMemo를 호출하면 계속 일정이 무한증식하는 버그가 발생함.
       });
     }
     catch (error) {
-    console.error('Error while fetching data:', error);
-  }
-};
-*/
+      console.error('Error while fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+    const selectedDateString = selectedDate.toDateString();
+    if (memos[selectedDateString]) {
+      setMemoList(memos[selectedDateString]);
+    } else {
+      setMemoList([]);
+    }
+  }, [selectedDate, memos]);
+  
+
   
   const addMemo2 = async () => {
+    const token = localStorage.getItem('accessToken');
     const Time = `T${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}:00Z`;
     const Day = `${selectedDate.getFullYear()}-${(selectedDate.getMonth()+1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`
     const newMemo = {
@@ -65,7 +71,7 @@ const CalendarLayout = ({}) => {
     };
 
     try {
-      await axios.post('http://localhost:8080/calendar/create', newMemo);
+      await axios.post('http://localhost:8080/calendar/create', newMemo, {headers: {Authorization: `Bearer ${token}`}});
   
       const updatedMemoList = [...memoList, newMemo];
       setMemoList(updatedMemoList);
@@ -92,10 +98,10 @@ const CalendarLayout = ({}) => {
     memos[selectedDateString] = updatedMemoList;
     setMemoList(updatedMemoList);
     setShowMemoModal(false);
-    setStartTimeHour('');
-    setStartTimeMinute('');
-    setPatientName('');
-    setPatientID('');
+    //setStartTimeHour('');
+    //setStartTimeMinute('');
+    //setPatientName('');
+    //setPatientID('');
   };
 
   const renderMemoList = () => {
@@ -310,7 +316,7 @@ const CalendarLayout = ({}) => {
                         <textarea rows="1" cols="5" value={patientName} onChange={(e) => setPatientName(e.target.value)} /><br/>
                         <label>진료 내용:</label>
                         <textarea rows="1" cols="2" value={patientID} onChange={(e) => setPatientID(e.target.value)} /><br/>
-                        <button onClick={addMemo}>추가</button>
+                        <button onClick={addMemo2}>추가</button>
                         <button onClick={() => setShowMemoModal(false)}>취소</button>
                       </div>
                     )}

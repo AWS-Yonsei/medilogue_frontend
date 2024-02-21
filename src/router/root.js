@@ -124,7 +124,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "calendar",
+    path: "calendar/:date",
     element: (
       <Suspense fallback={Loading}>
         <Calendar />
