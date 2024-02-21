@@ -1,51 +1,187 @@
 import * as React from "react";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import Calendar from 'react-calendar';
+import "./Calendar.css"
+import { useNavigate } from "react-router-dom";
+const API_URL = 'http://localhost:8080'
 
-function CalendarLayout(props) {
+const CalendarLayout = ({}) => {
+  const [memos, setMemos] = useState({});
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showMemoModal, setShowMemoModal] = useState(false);
+  const handleDateClick = (newDate) => {
+    setSelectedDate(newDate);
+    setShowMemoModal(false);
+    //window.location.reload();
+    navigate("/calendar/"+newDate);
+    
+  }
+  const navigate = useNavigate();
+  const [memoList, setMemoList] = useState([]);
+  const [startTimeHour, setStartTimeHour] = useState('');
+  const [startTimeMinute, setStartTimeMinute] = useState('');
+  const [patientName, setPatientName] = useState('');
+  const [patientID, setPatientID] = useState('');
+
+  const getData = async () => {
+    try{
+      const token = localStorage.getItem('accessToken');
+      const formattedDate = `${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`;
+      const response = await axios.get(`${API_URL}/calendar/${formattedDate}`, {headers: {Authorization: `Bearer ${token}`}});
+      const { schedules } = response.data;
+      setMemoList(schedules);
+      console.log(schedules);
+      schedules.forEach(schedule => { 
+        const date = new Date(schedule.startTime).toISOString().split('T')[0];
+        if (memos[date]) {
+          memos[date].push(schedule);
+        } else {
+          memos[date] = [];
+        }
+      });
+      console.log("memos",memos);
+    }
+    catch (error) {
+      console.error('Error while fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+    const selectedDateString = selectedDate.toDateString();
+    if (memos[selectedDateString]) {
+      setMemoList(memos[selectedDateString]);
+    } else {
+      setMemoList([]);
+    }
+  }, []);
+    
+  const createSchedule = async () => {
+    const token = localStorage.getItem('accessToken');
+    const Time = `T${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}:00Z`;
+    const Day = `${selectedDate.getFullYear()}-${(selectedDate.getMonth()+1).toString().padStart(2, '0')}-${(selectedDate.getDate()).toString().padStart(2, '0')}`
+    const newMemo = {
+      content: patientID,
+      startTime: `${Day}${Time}`,
+      attendee: patientName,
+    };
+
+    try {
+      await axios.post('http://localhost:8080/calendar/create', newMemo, {headers: {Authorization: `Bearer ${token}`}});
+    } catch (error) {
+      console.error('Error while sending data:', error);
+    }
+    navigate("/calendar/"+selectedDate);
+    window.location.reload();
+  };
+
+  const renderMemoList = () => {
+    const dateString = new Date(selectedDate).toISOString().split('T')[0];
+    const daySchedules = memos[dateString];
+    if(!daySchedules) {
+      return null;
+    }
+    return daySchedules.map((memo, index) => {
+      let backgroundColorClass;
+      if (index%3 === 0) {
+        backgroundColorClass = "bg-emerald-400 bg-opacity-30";
+      } else if (index%3 === 1) {
+        backgroundColorClass = "bg-orange-50";
+      } else if (index%3 === 2) {
+        backgroundColorClass = "bg-red-600 bg-opacity-20";
+      }
+  
+      return (
+        <div key={index} className={`gap-4 justify-between mt-8 `}>
+          <div className="time">
+            {new Date(memo.startTime).toISOString().split('T')[1].split('.')[0]}
+          </div>
+          <div className={` flex gap-3 justify-between text-base font-medium tracking-tight rounded text-stone-900 ${backgroundColorClass}`}>
+            <div className="bg-teal-600 rounded h-[76px] w-[5px]" />
+            <div className="flex_col1 my-auto">
+              <div className="text-black">{`환자 이름: ${memo.attendee}`}</div>
+              <div className="mt_4 text-black">{`진료 내용: ${memo.content}`}</div>
+            </div>
+          </div>
+        </div>
+      );
+
+      return null;
+    });
+  };
+  
+  
+
+  const handleAddMemoClick = () => {
+    setShowMemoModal(true);
+    console.log(selectedDate)
+  };
+  
+  const tileContent = ({ date }) => {
+    const dateString = date.toISOString().split('T')[0];
+    //new Date(schedule.startTime).toISOString().split('T')[0];
+    const memo = memos[dateString];
+    if (memo) {
+      return (
+        <div className="memo-list">
+          {memo.map((time, index) => (
+            <div key={index} className="memo-item">
+              {index === 0 && <br />} 
+              <div>{`진료: ${new Date(time.startTime).toISOString().split('T')[1].split(':')[0]}:${new Date(time.startTime).toISOString().split('T')[1].split(':')[1]}`}</div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="flex gap-0 bg-white max-md:flex-wrap">
-      <div className="flex flex-col px-5 pt-8 pb-12 whitespace-nowrap basis-0 bg-slate-300 text-neutral-600 max-md:hidden">
+      <div className="flex_col px-5 pt-8 pb-12 whitespace-nowrap basis-0 bg-slate-300 text-neutral-600 max-md:hidden">
         <div className="text-2xl font-extrabold tracking-tighter">menu</div>
         <div className="shrink-0 mt-12 h-px max-md:mt-10" />
-        <div className="flex flex-col items-center px-2 mt-6 text-sm font-bold">
+        <div className="flex_col items-center px-2 mt-6 text-sm font-bold">
           <div className="self-stretch">Core</div>
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/366a401627ee8b7fe59452f917d17833e1267e2e47ffe63495e5d6213f670757?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="mt-6 aspect-[1.19] w-[69px]"
+            className="mt-6 c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b51516d30c032f7b31af6563ba64b990e35dccd5da78b6546eef7e0dbb3f9132?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b614b93a28b5ca40a1ff892d7a8d8cffd3fcf459577e96616739260722785f39?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/aa64b524a7e79556f8838ac092e1512e093a9482869db90cee4e907b15881748?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/a0cd99d5499f718d9454600a83f8bed8a7370dcf25a95ddd78ba394a137afe83?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae13fff898e36cdd43f878524bee401ab2f5eb185e8b28d9c02da2fe84e77947?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ee66f13d743efe48f8a20151fc077ba2852257b5034df74a1d1d15fd9748403?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-            className="aspect-[1.19] w-[69px]"
+            className="c_image"
           />
         </div>
       </div>
-      <div className="flex flex-col flex-1 max-md:max-w-full">
+      <div className="flex_col1 max-md:max-w-full">
         <div className="flex gap-5 justify-between items-center py-4 pl-12 w-full whitespace-nowrap bg-slate-300 max-md:flex-wrap max-md:pl-5 max-md:max-w-full">
           <div className="flex gap-4 self-stretch px-6 py-4 my-auto text-base bg-zinc-50 rounded-[50px] text-zinc-500 max-md:flex-wrap max-md:px-5 max-md:max-w-full">
             <img
@@ -84,7 +220,7 @@ function CalendarLayout(props) {
                   srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/47e40563482b11735ceddabd339377003a6f8db45073dd45d1cbdd04171ca60d?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
                   className="rounded-full aspect-square w-[45px]"
                 />
-                <div className="flex flex-col flex-1 self-start mt-1">
+                <div className="flex_col1 self-start mt-1">
                   <div className="font-semibold">User Name</div>
                   <div className="mt-3.5 font-medium">
                     <span className="text-stone-600">ID: </span>
@@ -104,21 +240,26 @@ function CalendarLayout(props) {
         </div>
         <div className="mx-6 mt-2 max-md:mr-2.5 max-md:max-w-full">
           <div className="flex gap-5 max-md:flex-col max-md:gap-0 max-md:">
-            <div className="flex flex-col w-[70%] max-md:ml-0 max-md:w-full">
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/59cbf14fac968380241e6be2670eacacc040d73ccf0e7047e0f3667b80da8ca6?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
-                className="grow mt-16 w-full aspect-[1.25] max-md:mt-10 max-md:max-w-full"
-              />
+            <div className="flex_col w-[70%] max-md:ml-0 max-md:w-full">
+              <div className="calendar-app">
+                <div className="calendar-container">
+                  <Calendar
+                    onClickDay={handleDateClick}
+                    value={selectedDate}
+                    formatDay={(locale, date) => date.toLocaleString("en", {day: "numeric"})}
+                    tileContent={tileContent}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col ml-5 w-[30%] max-md:ml-0 max-md:w-full">
-              <div className="flex flex-col pt-4 pb-12 mx-auto w-full bg-white rounded-md border border-solid border-black border-opacity-30 max-md:mt-2.5">
-                <div className="flex flex-col px-4">
+            <div className="flex_col ml-5 w-[30%] max-md:ml-0 max-md:w-full">
+              <div className="flex_col pt-4 pb-12 mx-auto w-full bg-white rounded-md border border-solid border-black border-opacity-30 max-md:mt-2.5">
+                <div className="flex_col px-4">
                   <div className="flex gap-5 justify-between pr-6 whitespace-nowrap max-md:pr-5">
-                    <div className="flex flex-col">
-                      <div className="text-base text-neutral-600">Today</div>
+                    <div className="calendar-container">
+                      <div className="text-base text-neutral-600">SelectedDay</div>
                       <div className="mt-5 text-xl font-medium text-neutral-900">
-                        Tuesday 2024/01/31
+                        {selectedDate.toDateString()}
                       </div>
                     </div>
                     <img
@@ -127,55 +268,39 @@ function CalendarLayout(props) {
                       className="self-start aspect-square w-[38px]"
                     />
                   </div>
-                  <div className="flex gap-4 justify-between mt-16 max-md:mt-10">
-                    <div className="grow self-start text-sm whitespace-nowrap text-zinc-700">
-                      08:00 am
-                    </div>
-                    <div className="flex gap-3 justify-between text-base font-medium tracking-tight rounded bg-emerald-400 bg-opacity-30 text-stone-900">
-                      <div className="bg-teal-600 rounded h-[76px] w-[5px]" />
-                      <div className="flex flex-col flex-1 my-auto">
-                        <div>환자 이름: ㄱㅇㅁ</div>
-                        <div className="mt-4">환자 ID: 123456</div>
+                  <div className="gap-4 justify-between mt-16 max-md:mt-10">
+                    {renderMemoList()}
+                    {!showMemoModal && (
+                      <button onClick={handleAddMemoClick}>메모추가</button>
+                    )}
+                    {showMemoModal && (
+                      <div className="modal">
+
+                        <label>진료 시간:</label>
+                        <div>
+                          <select value={startTimeHour} onChange={(e) => setStartTimeHour(e.target.value)}>
+                            {[...Array(25).keys()].map((hour) => (
+                              <option key={hour} value={hour.toString().padStart(2, '0')}>
+                                {hour.toString().padStart(2, '0')}
+                              </option>
+                            ))}
+                          </select>
+                          시
+                          <select value={startTimeMinute} onChange={(e) => setStartTimeMinute(e.target.value)}>
+                            <option value="00">00</option>
+                            <option value="30">30</option>
+                          </select>
+                          분
+                        </div>
+                        <label>환자 이름:</label>
+                        <textarea rows="1" cols="5" value={patientName} onChange={(e) => setPatientName(e.target.value)} /><br/>
+                        <label>진료 내용:</label>
+                        <textarea rows="1" cols="2" value={patientID} onChange={(e) => setPatientID(e.target.value)} /><br/>
+                        <button onClick={createSchedule} >추가</button>
+                        <button onClick={() => setShowMemoModal(false)}>취소</button>
                       </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 justify-between mt-8">
-                    <div className="grow self-start text-sm whitespace-nowrap text-zinc-700">
-                      10:45 am
-                    </div>
-                    <div className="flex gap-2 justify-between text-base font-medium tracking-tight bg-orange-50 rounded text-stone-900">
-                      <div className="bg-orange-400 rounded h-[76px] w-[5px]" />
-                      <div className="flex flex-col flex-1 my-auto">
-                        <div>환자 이름: ㄱㅇㅁ</div>
-                        <div className="mt-4">환자 ID: 123456</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex gap-4 justify-between mt-8 whitespace-nowrap">
-                    <div className="grow self-start text-sm text-zinc-700">
-                      12:00 am
-                    </div>
-                    <div className="flex flex-col flex-1 items-start py-4 pr-20 pl-4 text-base font-medium tracking-tight rounded bg-red-600 bg-opacity-20 text-stone-900 max-md:pr-5">
-                      <div>환자 이름: ㄱㅇㅁ</div>
-                      <div className="mt-4">환자 ID: 123456</div>
-                    </div>
-                  </div>
-                  <div className="mt-7 text-sm text-zinc-700">02:40 pm</div>
-                  <div className="self-center text-base font-medium tracking-tight whitespace-nowrap text-stone-900">
-                    환자 이름: ㄱㅇㅁ
-                  </div>
-                  <div className="self-center mt-4 text-base font-medium tracking-tight whitespace-nowrap text-stone-900">
-                    환자 ID: 123456
-                  </div>
+                    )}
                 </div>
-                <div className="flex gap-4 self-center mt-11 max-w-full whitespace-nowrap w-[364px] max-md:mt-10">
-                  <div className="grow self-start text-sm text-zinc-700">
-                    04:00 pm
-                  </div>
-                  <div className="flex flex-col flex-1 items-start py-4 pr-20 pl-5 text-base font-medium tracking-tight rounded bg-sky-600 bg-opacity-20 text-stone-900 max-md:px-5">
-                    <div>환자 이름: ㄱㅇㅁ</div>
-                    <div className="mt-4">환자 ID: 123456</div>
-                  </div>
                 </div>
               </div>
             </div>
