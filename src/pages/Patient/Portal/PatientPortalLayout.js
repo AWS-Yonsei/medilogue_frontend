@@ -31,7 +31,7 @@ const PatientPortalLayout = () => {
                                 <img class="box-arrow" src={Body_Arrow} />
                             </div>
                         </a>
-                        <div className="yellow-box">
+                        <a href="/patient_analyze" className="yellow-box">
                             <img className="box-icon" src={Yellowbox}></img>
                             <div className="box-text">
                                 AI 건강분석
@@ -39,7 +39,7 @@ const PatientPortalLayout = () => {
                             <div className="box-to">
                                 <img class="box-arrow" src={Body_Arrow} />
                             </div>
-                        </div>
+                        </a>
                         <a href="/patient_manage" className="blue-box">
                             <img className="box-icon" src={Bluebox}></img>
                             <div className="box-text">

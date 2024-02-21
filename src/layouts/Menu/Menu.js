@@ -10,9 +10,6 @@ const Menu = () => {
             </div>
             <ul className="navbar_list">
                 <li className="list_menu">
-                    <Link to={'/login'}>Sign In</Link>
-                </li>
-                <li className="list_menu">
                     <Link to={'/patient_portal'}>Patient</Link>
                 </li>
                 <li className="list_menu">

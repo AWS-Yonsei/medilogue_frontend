@@ -10,6 +10,7 @@ const ChatPortal = lazy(() => import("../pages/Chat/Portal/ChatPortal"));
 const ChatRoom = lazy(() => import("../pages/Chat/Chatroom/ChatRoom"));
 const PatientManage = lazy(() => import("../pages/Doctor/Manage/PatientManage"));
 const MissionManage = lazy(() => import("../pages/Patient/Mission/MissionManage"));
+const PatientAnalyze = lazy(() => import("../pages/Patient/Analyze/PatientAnalyze"));
 const PatientConsult = lazy(() => import("../pages/Patient/Consult/PatientConsult"));
 const PatientRecord = lazy(() => import("../pages/Patient/Record/PatientRecord"));
 const Calendar = lazy(() => import("../pages/Calendar/Calendar"));
@@ -84,6 +85,14 @@ const root = createBrowserRouter([
     ),
   },
   {
+    path: "patient_analyze",
+    element: (
+      <Suspense fallback={Loading}>
+        <PatientAnalyze />
+      </Suspense>
+    ),
+  },
+  {
     path: "patient_consult",
     element: (
       <Suspense fallback={Loading}>
@@ -124,7 +133,7 @@ const root = createBrowserRouter([
     ),
   },
   {
-    path: "calendar",
+    path: "calendar/:date",
     element: (
       <Suspense fallback={Loading}>
         <Calendar />
