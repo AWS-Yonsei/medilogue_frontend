@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import "./Calendar.css"
-
+import { useNavigate } from "react-router-dom";
 const API_URL = 'http://localhost:8080'
 
 const CalendarLayout = ({}) => {
@@ -13,8 +13,11 @@ const CalendarLayout = ({}) => {
   const handleDateClick = (newDate) => {
     setSelectedDate(newDate);
     setShowMemoModal(false);
+    //window.location.reload();
+    navigate("/calendar/"+newDate);
+    
   }
-  
+  const navigate = useNavigate();
   const [memoList, setMemoList] = useState([]);
   const [startTimeHour, setStartTimeHour] = useState('');
   const [startTimeMinute, setStartTimeMinute] = useState('');
@@ -27,21 +30,17 @@ const CalendarLayout = ({}) => {
       const formattedDate = `${selectedDate.getFullYear()}-${(selectedDate.getMonth() + 1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`;
       const response = await axios.get(`${API_URL}/calendar/${formattedDate}`, {headers: {Authorization: `Bearer ${token}`}});
       const { schedules } = response.data;
+      setMemoList(schedules);
       console.log(schedules);
-      schedules.forEach(schedule => {
-        console.log(schedule);
-        //수정이 필요함
-        const startTime = new Date(schedule.startTime);
-        const startTimeHour = startTime.getHours().toString().padStart(2, '0');
-        const startTimeMinute = startTime.getMinutes().toString().padStart(2, '0');
-
-        setStartTimeHour(startTimeHour);
-        setStartTimeMinute(startTimeMinute);
-        setPatientID(schedule.content);
-        setPatientName(schedule.attendee);
-
-        addMemo(); // addMemo를 호출하면 계속 일정이 무한증식하는 버그가 발생함.
+      schedules.forEach(schedule => { 
+        const date = new Date(schedule.startTime).toISOString().split('T')[0];
+        if (memos[date]) {
+          memos[date].push(schedule);
+        } else {
+          memos[date] = [];
+        }
       });
+      console.log("memos",memos);
     }
     catch (error) {
       console.error('Error while fetching data:', error);
@@ -56,14 +55,12 @@ const CalendarLayout = ({}) => {
     } else {
       setMemoList([]);
     }
-  }, [selectedDate, memos]);
-  
-
-  
-  const addMemo2 = async () => {
+  }, []);
+    
+  const createSchedule = async () => {
     const token = localStorage.getItem('accessToken');
     const Time = `T${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}:00Z`;
-    const Day = `${selectedDate.getFullYear()}-${(selectedDate.getMonth()+1).toString().padStart(2, '0')}-${selectedDate.getDate().toString().padStart(2, '0')}`
+    const Day = `${selectedDate.getFullYear()}-${(selectedDate.getMonth()+1).toString().padStart(2, '0')}-${(selectedDate.getDate()).toString().padStart(2, '0')}`
     const newMemo = {
       content: patientID,
       startTime: `${Day}${Time}`,
@@ -72,40 +69,20 @@ const CalendarLayout = ({}) => {
 
     try {
       await axios.post('http://localhost:8080/calendar/create', newMemo, {headers: {Authorization: `Bearer ${token}`}});
-  
-      const updatedMemoList = [...memoList, newMemo];
-      setMemoList(updatedMemoList);
-      setShowMemoModal(false);
-      setStartTimeHour('');
-      setStartTimeMinute('');
-      setPatientName('');
-      setPatientID('');
     } catch (error) {
       console.error('Error while sending data:', error);
     }
-  };
-  
-  const addMemo = () => {
-    const startTime = `${startTimeHour.padStart(2, '0')}:${startTimeMinute.padStart(2, '0')}`;
-    const newMemo = {
-      startTime,
-      patientName,
-      patientID,
-    };
-
-    const updatedMemoList = [...memoList, newMemo];
-    const selectedDateString = selectedDate.toDateString();
-    memos[selectedDateString] = updatedMemoList;
-    setMemoList(updatedMemoList);
-    setShowMemoModal(false);
-    //setStartTimeHour('');
-    //setStartTimeMinute('');
-    //setPatientName('');
-    //setPatientID('');
+    navigate("/calendar/"+selectedDate);
+    window.location.reload();
   };
 
   const renderMemoList = () => {
-    return memoList.map((memo, index) => {
+    const dateString = new Date(selectedDate).toISOString().split('T')[0];
+    const daySchedules = memos[dateString];
+    if(!daySchedules) {
+      return null;
+    }
+    return daySchedules.map((memo, index) => {
       let backgroundColorClass;
       if (index%3 === 0) {
         backgroundColorClass = "bg-emerald-400 bg-opacity-30";
@@ -118,17 +95,19 @@ const CalendarLayout = ({}) => {
       return (
         <div key={index} className={`gap-4 justify-between mt-8 `}>
           <div className="time">
-            {memo.startTime}
+            {new Date(memo.startTime).toISOString().split('T')[1].split('.')[0]}
           </div>
           <div className={` flex gap-3 justify-between text-base font-medium tracking-tight rounded text-stone-900 ${backgroundColorClass}`}>
             <div className="bg-teal-600 rounded h-[76px] w-[5px]" />
             <div className="flex_col1 my-auto">
-              <div className="text-black">{`환자 이름: ${memo.patientName}`}</div>
-              <div className="mt_4 text-black">{`진료 내용: ${memo.patientID}`}</div>
+              <div className="text-black">{`환자 이름: ${memo.attendee}`}</div>
+              <div className="mt_4 text-black">{`진료 내용: ${memo.content}`}</div>
             </div>
           </div>
         </div>
       );
+
+      return null;
     });
   };
   
@@ -140,15 +119,16 @@ const CalendarLayout = ({}) => {
   };
   
   const tileContent = ({ date }) => {
-    const dateString = date.toDateString();
+    const dateString = date.toISOString().split('T')[0];
+    //new Date(schedule.startTime).toISOString().split('T')[0];
     const memo = memos[dateString];
     if (memo) {
       return (
         <div className="memo-list">
-          {memoList.map((memo, index) => (
+          {memo.map((time, index) => (
             <div key={index} className="memo-item">
               {index === 0 && <br />} 
-              <div>{`진료: ${memo.startTime}`}</div>
+              <div>{`진료: ${new Date(time.startTime).toISOString().split('T')[1].split(':')[0]}:${new Date(time.startTime).toISOString().split('T')[1].split(':')[1]}`}</div>
             </div>
           ))}
         </div>
@@ -316,7 +296,7 @@ const CalendarLayout = ({}) => {
                         <textarea rows="1" cols="5" value={patientName} onChange={(e) => setPatientName(e.target.value)} /><br/>
                         <label>진료 내용:</label>
                         <textarea rows="1" cols="2" value={patientID} onChange={(e) => setPatientID(e.target.value)} /><br/>
-                        <button onClick={addMemo2}>추가</button>
+                        <button onClick={createSchedule} >추가</button>
                         <button onClick={() => setShowMemoModal(false)}>취소</button>
                       </div>
                     )}
