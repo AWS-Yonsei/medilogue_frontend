@@ -42,12 +42,30 @@ const PatientConsultLayout = () => {
                     <div className="body_container">
                         <div className="body_report">
                             <div className="body_container_name">분석결과</div>
-                            <div className="body_report_top_box"> 
+                            <div className="body_report_top_box">
                                 <div className="body_report_top_words">
-                                    정강희 님은 <br/>
+                                    정강희 님은 <br />
                                     지금 <div className="text_orange">주의</div> 단계입니다
                                 </div>
-
+                                <div className="body_report_top_icon">
+                                    <div className="body_report_top_icon_box">
+                                        <img src={SmileGreen} className="body_report_top_icon_image" />
+                                        <div className="body_report_top_icon_text text-green-500 text-2xl font-bold">안전</div>
+                                    </div>
+                                    <img src={Arrow_right} className="body_report_top_icon_image" />
+                                    <div className="body_report_top_icon_box">
+                                        <img src={SmileOrange} className="body_report_top_icon_image" />
+                                        <div className="body_report_top_icon_text text-orange-500 text-2xl font-bold">주의</div>
+                                    </div>
+                                    <img src={Arrow_right} className="body_report_top_icon_image" />
+                                    <div className="body_report_top_icon_box">
+                                        <img src={SmileRed} className="body_report_top_icon_image" />
+                                        <div className="body_report_top_icon_text text-red-500 text-2xl font-bold">위험</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="body_report_bottom_box">
+                                <div className="placeholder">Chart</div>
                             </div>
                         </div>
                         <div className="body_improve">

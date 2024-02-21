@@ -83,6 +83,7 @@ html {
     height: 30%;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
     border-radius: 12px;
     margin: 12px;
     border: 1px solid rgba(0, 0, 0, 0.40);
@@ -96,6 +97,57 @@ html {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.text_orange {
+    display: inline;
+    color: #FC8731;
+    margin: 20px;
+    font-family: Krub;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.body_report_top_icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 12px;
+}
+
+.body_report_top_icon_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.body_report_top_icon_image {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    flex-shrink: 0;
+}
+
+.body_report_top_icon_text {
+    width: 65px;
+    height: 25px;
+    margin: 5px;
+    flex-shrink: 0;
+}
+
+.body_report_bottom_box {
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    margin: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.40);
+    background: #FFF;
 }
 
 .body_improve_divider {
