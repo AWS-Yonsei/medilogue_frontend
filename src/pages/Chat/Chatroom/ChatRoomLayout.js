@@ -15,6 +15,7 @@ import Placeholder from "../../../components/placeholder.jpg";
 import CloseButton from '../../../components/closebutton.png';
 import VideoPlayer from "./VideoPlayer";
 import AWS from 'aws-sdk';
+import { v4 as uuid4 } from 'uuid';
 
 const ChatRoomLayout = () => {
     const [stream, setStream] = useState();
@@ -34,14 +35,14 @@ const ChatRoomLayout = () => {
             accessKeyId: ACESS_KEY_ID,
             secretAccessKey: SECRET_ACESS_KEY_ID,
         });
-        const updateDate = new Date(sound.lastModifiedDate);
-        console.log(updateDate);
-        //나중에 지정 가능하도록 고쳐야함.
+        
+        const updateDate = new Date(sound.lastModifiedDate).getTime();
+        const filename = `${sound.name}${updateDate}.mp3`
         const upload = new AWS.S3.ManagedUpload({
             params: {
                 ACL: 'public-read',
                 Bucket: BUCKET_NAME,
-                Key: `input/${sound.name+".mp3"}`,
+                Key: `input/${filename}`,
                 Body: sound,
             }
         })
@@ -103,7 +104,7 @@ const ChatRoomLayout = () => {
         source.disconnect();
     };
 
-    const onSubmitAudioFile = useCallback(() => {
+    const onSubmitAudioFile = useCallback( async() => {
         if (audioUrl) {
         console.log(URL.createObjectURL(audioUrl));
         }
