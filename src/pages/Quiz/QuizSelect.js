@@ -50,31 +50,27 @@ const Quiz = () => {
   ]);
   const [quizList, setQuizList] = useState([
     {
-      quizNo: 1,
-      isTaken: true,
-      title: "당뇨병 식단 퀴즈",
-      quizNum: 8,
+      take_test: true,
+      category: "당뇨병 퀴즈",
+      quiz_cnt: 8,
       iconPath: sampleQuizIcon,
     },
     {
-      quizNo: 2,
-      isTaken: false,
-      title: "당뇨병 식단 퀴즈2",
-      quizNum: 8,
+      take_test: false,
+      category: "당뇨병 퀴즈2",
+      quiz_cnt: 8,
       iconPath: sampleQuizIcon,
     },
     {
-      quizNo: 3,
-      isTaken: false,
-      title: "당뇨병 식단 퀴즈3",
-      quizNum: 6,
+      take_test: false,
+      category: "당뇨병 퀴즈3",
+      quiz_cnt: 6,
       iconPath: sampleQuizIcon,
     },
     {
-      quizNo: 4,
-      isTaken: true,
-      title: "당뇨병 식단 퀴즈4",
-      quizNum: 10,
+      take_test: true,
+      category: "당뇨병 퀴즈4",
+      quiz_cnt: 10,
       iconPath: sampleQuizIcon,
     },
   ]);
@@ -116,16 +112,16 @@ const Quiz = () => {
         {quizList.map((item) => (
           <QuizItem
             onClick={() => {
-              navigate(`${"/quiz/feedback/"+item.quizNo}`);
+              navigate(`${"/quiz/feedback/"+item.category}`);
             }}
           >
             <UpperContainer>
               <QuizInfoWrapper>
                 <QuizInfo>
-                  <QuizTitle>{item.title}</QuizTitle>
+                  <QuizTitle>{item.category}</QuizTitle>
                   <QuizNum>
                     <img src={clockIcon} width={10} alt="clock" />
-                    <div>{item.quizNum}개 문제</div>
+                    <div>{item.quiz_cnt}개 문제</div>
                   </QuizNum>
                 </QuizInfo>
                 <QuizIcon src={item.iconPath} />
@@ -134,8 +130,8 @@ const Quiz = () => {
             </UpperContainer>
 
             <DivideLine />
-            <QuizStatus $isTaken={item.isTaken}>
-              {item.isTaken ? "피드백" : "미응시"}
+            <QuizStatus $take_test={item.take_test}>
+              {item.take_test ? "피드백" : "미응시"}
             </QuizStatus>
           </QuizItem>
         ))}
