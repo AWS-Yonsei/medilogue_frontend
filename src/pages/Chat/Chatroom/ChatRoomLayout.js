@@ -13,14 +13,17 @@ import Management from "../../../components/Management.png";
 import Out from "../../../components/Call_end.png";
 import Placeholder from "../../../components/placeholder.jpg";
 import CloseButton from '../../../components/closebutton.png';
+import VideoPlayer from "./VideoPlayer";
 
 const ChatRoomLayout = () => {
 
     return (
         <div className="chatroom_container">
             <div className="chatroom_body">
-                <div className="chatroom_face">
-                    <img src={Placeholder} className="chatroom_face_data" ></img>
+                
+                <div className="chatroom_face"> 
+                    {/* <img src={Placeholder} className="chatroom_face_data" ></img> */}
+                    <VideoPlayer className="chatroom_face_data"/>
                 </div>
                 <div className="chatroom_chat">
                     <div className="chatroom_topbar">

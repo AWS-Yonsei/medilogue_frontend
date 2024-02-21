@@ -1,5 +1,5 @@
 import "./ChatPortal.css"
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components'
 import logo from "../../../components/logo.png";
@@ -23,8 +23,18 @@ import OptionButton from '../../../components/option.png';
 import Avatar from "../../../components/placeholder.jpg";
 import Camera from "../../../components/camera.png";
 import Send from "../../../components/send.png";
+import { SocketContext } from "../socket";
 
 const ChatPortalLayout = () => {
+    const {
+        name,
+        callAccepted,
+        myVideo,
+        userVideo,
+        callEnded,
+        stream,
+        call
+      } = useContext(SocketContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const customStyles = {
         content: {
