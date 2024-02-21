@@ -34,13 +34,14 @@ const ChatRoomLayout = () => {
             accessKeyId: ACESS_KEY_ID,
             secretAccessKey: SECRET_ACESS_KEY_ID,
         });
-        const updateDate = new Date(sound.lastModifiedDate).toISOString();
+        const updateDate = new Date(sound.lastModifiedDate);
         console.log(updateDate);
+        //나중에 지정 가능하도록 고쳐야함.
         const upload = new AWS.S3.ManagedUpload({
             params: {
                 ACL: 'public-read',
                 Bucket: BUCKET_NAME,
-                Key: `input/${sound.name+updateDate+".mp3"}`,
+                Key: `input/${sound.name+".mp3"}`,
                 Body: sound,
             }
         })
