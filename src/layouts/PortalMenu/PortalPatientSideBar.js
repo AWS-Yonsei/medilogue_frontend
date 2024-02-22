@@ -67,7 +67,7 @@ const PortalPatientSideBar = () => {
                     </div>
                     <div className="nav-box">
                         <img class="nav_logo" src={Calendar} />
-                        <a href="/calendar" className="nav_data">
+                        <a href="/calendar/:date" className="nav_data">
                             Calendar
                         </a>
                         <div className="nav_dash">
