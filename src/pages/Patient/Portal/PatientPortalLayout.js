@@ -10,6 +10,8 @@ import Greenlight from "../../../components/green_light.png"
 import Orangelight from "../../../components/orange_light.png"
 import PortalMenu from "../../../layouts/PortalMenu/PortalMenu";
 import PortalPatientSideBar from "../../../layouts/PortalMenu/PortalPatientSideBar";
+import ChartData1 from "../../../components/solution/chart2.png"
+import ChartData2 from "../../../components/solution/chart3.png"
 
 const PatientPortalLayout = () => {
    
@@ -52,17 +54,17 @@ const PatientPortalLayout = () => {
                     </div>
                     <div className="charts">
                         <div className="chart-box-left">
-                            <div className="placeholder"> Chart </div>
+                            <img src={ChartData1}  />
                         </div>
                         <div className="chart-box-right">
-                            <div className="placeholder"> Chart </div>
+                            <img src={ChartData2}  />
                         </div>
                     </div>
                     <div className="tables">
                         <div className="table_container">
                             <div className="table_header">
                                 <div className="table_name">
-                                    XXX의 상담내역
+                                    김영서님의 상담내역
                                 </div>
                                 <div className="table_sort shadow-sm">
                                     <div className="grow">Monthly</div>
@@ -209,7 +211,7 @@ const PatientPortalLayout = () => {
                                         5
                                     </div>
                                     <div className="table_main_data">
-                                        김영서
+                                        정강희
                                     </div>
                                     <div className="table_main_data">
                                         #12412
