@@ -139,35 +139,35 @@ const QuizMenuLayout = ({ children }) => {
             </div>
             <div className="nav-box">
               <img class="nav_logo" src={Mypage} />
-              <a href="/mypage" className="nav_data">
+              <a href="/patient_portal" className="nav_data">
                 My Page
               </a>
               <div className="nav_dash">&gt;</div>
             </div>
             <div className="nav-box">
               <img class="nav_logo" src={Chatbot} />
-              <a href="/chatbot" className="nav_data">
+              <a href="/chat_portal" className="nav_data">
                 Chatbot
               </a>
               <div className="nav_dash">&gt;</div>
             </div>
             <div className="nav-box">
               <img class="nav_logo" src={Appointment} />
-              <a href="/appointment" className="nav_data">
-                Appointment
+              <a href="/quiz" className="nav_data">
+                Quiz
               </a>
               <div className="nav_dash">&gt;</div>
             </div>
             <div className="nav-box">
               <img class="nav_logo" src={Record} />
-              <a href="/record/:uid" className="nav_data">
+              <a href="/record/user2" className="nav_data">
                 Record
               </a>
               <div className="nav_dash">&gt;</div>
             </div>
             <div className="nav-box">
               <img class="nav_logo" src={Calendar} />
-              <a href="/calendar/:date" className="nav_data">
+              <a href="/calendar/2024-02-23" className="nav_data">
                 Calendar
               </a>
               <div className="nav_dash">&gt;</div>

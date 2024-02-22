@@ -30,7 +30,9 @@ const PatientConsultLayout = () => {
                         <div className="manage_box">
                             <div className="manage_box_header">
                                 <div className="doctor_patient_name">
-                                    XXX 환자와 XXX 의사
+                                    내과의 : 정강희
+                                    <br/>
+                                    환자 : 김영서
                                 </div>
                                 <img class="doctor_patient_choose" src={Change_Patient} />
                                 <div className="manage_box_calandar">

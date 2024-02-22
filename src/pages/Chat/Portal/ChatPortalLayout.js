@@ -63,7 +63,7 @@ const ChatPortalLayout = () => {
                     <div className="upper-nav-box">
                         <img src={doctor_imoction} className="upper-nav-imoticon" />
                         <div className="upper-nav-name">혈액과 강재현</div>
-                        <a href="/" className="upper-nav-power-container">
+                        <a href="/patient_portal" className="upper-nav-power-container">
                             <img src={power_button} className="upper-nav-power" />
                         </a>
                     </div>
@@ -93,7 +93,7 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Mypage} />
-                            <a href="/" className="nav_data">
+                            <a href="/patient_portal" className="nav_data">
                                 My Page
                             </a>
                             <div className="nav_dash">
@@ -111,8 +111,8 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Appointment} />
-                            <a href="/appointment" className="nav_data">
-                                Appointment
+                            <a href="/quiz" className="nav_data">
+                                Quiz
                             </a>
                             <div className="nav_dash">
                                 &gt;
@@ -120,7 +120,7 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Record} />
-                            <a href="/record" className="nav_data">
+                            <a href="/record/user2" className="nav_data">
                                 Record
                             </a>
                             <div className="nav_dash">
@@ -129,42 +129,34 @@ const ChatPortalLayout = () => {
                         </div>
                         <div className="nav-box">
                             <img class="nav_logo" src={Calendar} />
-                            <a href="/calendar" className="nav_data">
+                            <a href="/calendar/2024-02-23" className="nav_data">
                                 Calendar
                             </a>
                             <div className="nav_dash">
                                 &gt;
                             </div>
                         </div>
-                        <div className="nav-box">
-                            <img class="nav_logo" src={Payments} />
-                            <a href="/payments" className="nav_data">
-                                Payments
-                            </a>
-                            <div className="nav_dash">
-                                &gt;
-                            </div>
-                        </div>
+
                         <div className="w-[100%] my-[1%] border-[1px] border-white"></div>
                         <div>
                             <h2 className="nav_submenu">진료과</h2>
                         </div>
                         <div className="nav_doctor_box">
                             <img class="nav_doctor_logo" src={Filter} />
-                            <a href="/management" className="nav_doctor_data">
+                            <a href="/chat_portal" className="nav_doctor_data">
                                 내과 강재현
                             </a>
 
                         </div>
                         <div className="nav_doctor_box">
                             <img class="nav_doctor_logo" src={Filter} />
-                            <a href="/management" className="nav_doctor_data">
+                            <a href="/chat_portal" className="nav_doctor_data">
                                 안과 정강희
                             </a>
                         </div>
                         <div className="nav_doctor_box">
                             <img class="nav_doctor_logo" src={Filter} />
-                            <a href="/management" className="nav_doctor_data">
+                            <a href="/chat_portal" className="nav_doctor_data">
                                 외과 김하은
                             </a>
                         </div>

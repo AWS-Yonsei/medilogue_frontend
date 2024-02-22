@@ -68,9 +68,9 @@ const PatientManageLayout = () => {
                                     <a href="/mission_manage" className="patient_button">
                                         <div className="patient_button_data"> 미션관리 </div>
                                     </a>
-                                    <div className="patient_button">
-                                        <div className="patient_button_data"> 환자관리 </div>
-                                    </div>
+                                    <a href="/record/user2" className="patient_button">
+                                        <div className="patient_button_data"> 환자정보 </div>
+                                    </a>
                                 </div>
                             </div>
                             <div class="patient_box">
@@ -91,9 +91,9 @@ const PatientManageLayout = () => {
                                     <a href="/mission_manage" className="patient_button">
                                         <div className="patient_button_data"> 미션관리 </div>
                                     </a>
-                                    <div className="patient_button">
-                                        <div className="patient_button_data"> 환자관리 </div>
-                                    </div>
+                                    <a href="/record/user2" className="patient_button">
+                                        <div className="patient_button_data"> 환자정보 </div>
+                                    </a>
                                 </div>
                             </div>
                             <div class="patient_box">
@@ -115,9 +115,9 @@ const PatientManageLayout = () => {
                                     <a href="/mission_manage" className="patient_button">
                                         <div className="patient_button_data"> 미션관리 </div>
                                     </a>
-                                    <div className="patient_button">
-                                        <div className="patient_button_data"> 환자관리 </div>
-                                    </div>
+                                    <a href="/record/user2" className="patient_button">
+                                        <div className="patient_button_data"> 환자정보 </div>
+                                    </a>
                                 </div>
                             </div>
                             <div class="patient_box">

@@ -15,7 +15,6 @@ import Placeholder from "../../../components/placeholder.jpg";
 import CloseButton from '../../../components/closebutton.png';
 import VideoPlayer from "./VideoPlayer";
 import AWS from 'aws-sdk';
-import { v4 as uuid4 } from 'uuid';
 
 const ChatRoomLayout = () => {
     const [stream, setStream] = useState();
@@ -176,7 +175,7 @@ const ChatRoomLayout = () => {
                 </div>
                 <div className="chatroom_bottom_rightbox" onClick={onSubmitAudioFile}>
                     <button className="chatroom_bottom_box">
-                        <a href="chat_portal">
+                        <a href="/patient_portal">
                             <img src={Out} className="chatroom_bottom_icon_big"></img>
                         </a>
                     </button>

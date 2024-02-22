@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import "./Calendar.css"
 import { useNavigate } from "react-router-dom";
-import PortalMenu from "../../layouts/PortalMenu/PortalMenu";
-import PortalDoctorSideBar from "../../layouts/PortalMenu/PortalDoctorSideBar";
+import PortalMenu from "../../layouts/PortalMenu/PortalMenu.js";
+import PortalDoctorSideBar from "../../layouts/PortalMenu/PortalDoctorSideBar.js";
 const API_URL = 'http://localhost:8080'
 
-const CalendarLayout = ({ }) => {
+const CalendarLayout = ({}) => {
     const [memos, setMemos] = useState({});
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [showMemoModal, setShowMemoModal] = useState(false);
@@ -111,9 +111,6 @@ const CalendarLayout = ({ }) => {
             return null;
         });
     };
-
-
-
     const handleAddMemoClick = () => {
         setShowMemoModal(true);
         console.log(selectedDate)

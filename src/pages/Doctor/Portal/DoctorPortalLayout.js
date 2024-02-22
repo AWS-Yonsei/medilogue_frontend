@@ -31,7 +31,11 @@ const DoctorPortalLayout = () => {
                                 <img class="box-arrow" src={Body_Arrow} />
                             </div>
                         </div>
+<<<<<<< HEAD
                         <a href='/calendar/:date' className="yellow-box">
+=======
+                        <a href='/calendar/2024-02-24' className="yellow-box">
+>>>>>>> 49be9806cba85f94d01958759e888bf4646ef74c
                             <img className="box-icon" src={Yellowbox}></img>
                             <div className="box-text">
                                 일정관리

@@ -40,7 +40,7 @@ const PatientPortalLayout = () => {
                                 <img class="box-arrow" src={Body_Arrow} />
                             </div>
                         </a>
-                        <a href="/patient_manage" className="blue-box">
+                        <a href="/mission_manage" className="blue-box">
                             <img className="box-icon" src={Bluebox}></img>
                             <div className="box-text">
                                 오늘의 미션

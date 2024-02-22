@@ -49,8 +49,8 @@ const PortalPatientSideBar = () => {
                     </div>
                     <div className="nav-box">
                         <img class="nav_logo" src={Appointment} />
-                        <a href="/appointment" className="nav_data">
-                            Appointment
+                        <a href="/patient_analyze" className="nav_data">
+                            AI Analyze
                         </a>
                         <div className="nav_dash">
                             &gt;
@@ -67,7 +67,7 @@ const PortalPatientSideBar = () => {
                     </div>
                     <div className="nav-box">
                         <img class="nav_logo" src={Calendar} />
-                        <a href="/calendar/:date" className="nav_data">
+                        <a href="/calendar/2024-02-24" className="nav_data">
                             Calendar
                         </a>
                         <div className="nav_dash">
@@ -76,21 +76,17 @@ const PortalPatientSideBar = () => {
                     </div>
                     <div className="nav-box">
                         <img class="nav_logo" src={Payments} />
-                        <a href="/payments" className="nav_data">
-                            Payments
+                        <a href="/quiz" className="nav_data">
+                            Quiz
                         </a>
                         <div className="nav_dash">
                             &gt;
                         </div>
                     </div>
-                    <div className="w-[100%] my-[1%] border-[1px] border-white"></div>
-                    <div>
-                        <h2 className="nav_submenu">Commerce</h2>
-                    </div>
                     <div className="nav-box">
                         <img class="nav_logo" src={Management} />
-                        <a href="/management" className="nav_data">
-                            Management
+                        <a href="/mission_manage" className="nav_data">
+                            mission
                         </a>
                         <div className="nav_dash">
                             &gt;
