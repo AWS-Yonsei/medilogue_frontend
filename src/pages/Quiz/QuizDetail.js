@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import QuizMenuLayout from "./QuizMenuLayout";
 import {
   TitleContainer,
@@ -19,40 +21,48 @@ import {
 } from "./QuizDetailComponent";
 
 import dropdownIcon from "../../components/quiz/dropdown.png";
-const Quiz = () => {
-  const [quizInfo, setQuizInfo] = useState({
-    quizNo: 2,
-    isTaken: true,
-    title: "당뇨병 식단 퀴즈",
-    quizNum: 8,
-    correctNum: 7,
-    startTime: "2024 - 02 - 01 18:16",
-    endTime: "2024 - 02 - 01 18:16",
-    remainTime: "sdf",
-  });
+const API_URL = 'http://localhost:8080'
 
-  const [questionList, setQuestionList] = useState([
-    {
-      isCorrect: false,
-      question: "questionquestionquestionquestion",
-      answer: "answeransweransweransweranswer",
-      feedback: "feedbackfeedbackfeedbackfeedbackfeedback",
-      submittedAnswer: 1,
-    },
-    {
-      isCorrect: true,
-      question: "questionquestionquestionquestion",
-      answer: "answeransweransweransweranswer",
-      feedback: "feedbackfeedbackfeedbackfeedbackfeedback",
-      submittedAnswer: 2,
-    },
-  ]);
+
+const Quiz = () => {
+  const { category } = useParams();
+  const [isTaken, setIsTaken] = useState(true);
+  const [quizNum, setQuizNum] = useState(0);
+  const [correctNum, setCorrectNum] = useState(0);
+  const [startTime, setStartTime] = useState("2024 - 02 - 22 22:16");
+  const [endTime, setEndTime] = useState("2024 - 02 - 22 22:22");
+
+  const [questionList, setQuestionList] = useState([]);
+  const getResults = async () => {
+    try{
+      const token = localStorage.getItem('accessToken');
+      const response = await axios.get(`${API_URL}/quiz/feedback/${category}`, {headers: {Authorization: `Bearer ${token}`}});
+      const results = response.data;
+      console.log(results.feedback);
+      let correctCnt = 0;
+      setQuestionList(results.feedback);
+      setQuizNum(questionList.length);
+      results.forEach(result => {
+        if (result.result===true) {
+          correctCnt++;
+        } 
+      });
+      setCorrectNum(correctCnt);
+    }
+    catch (error) {
+      console.error('Error while fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    getResults();
+  }, [isTaken, quizNum, correctNum]);
 
   return (
     <QuizMenuLayout>
       <TitleContainer>
-        <Title>{quizInfo.title}</Title>
-        <QuizNum>{quizInfo.quizNum}개 문제</QuizNum>
+        <Title>{category}</Title>
+        <QuizNum>{quizNum}개 문제</QuizNum>
       </TitleContainer>
 
       <InfoContainer>
@@ -63,25 +73,26 @@ const Quiz = () => {
             <div>완료 일시</div>
           </TableHead>
           <TableData>
-            <div>{quizInfo.startTime}</div>
-            <div>{quizInfo.isTaken ? "complete" : "waiting"}</div>
-            <div>{quizInfo.endTime}</div>
+            <div>{startTime}</div>
+            <div>{isTaken ? "complete" : "waiting"}</div>
+            <div>{endTime}</div>
           </TableData>
         </InfoTable>
 
         <InfoBar>
-          <div>📆 Date: {quizInfo.startTime}</div>
+          <div>📆 Date: {startTime}</div>
           <div>⏰ Time: 9분 25초</div>
           <div>
             💡Grade:{" "}
             <span style={{ color: "#0BAB7C" }}>
-              {quizInfo.correctNum}/{quizInfo.quizNum}
+              {correctNum}/{quizNum}
             </span>
           </div>
         </InfoBar>
       </InfoContainer>
 
       {questionList.map((item) => (
+        console.log(item),
         <QuizItem {...item} />
       ))}
     </QuizMenuLayout>
@@ -90,10 +101,9 @@ const Quiz = () => {
 export default Quiz;
 
 const QuizItem = ({
-  isCorrect = false,
-  question,
-  answer,
-  feedback,
+  content,
+  result,
+  comment,
   submittedAnswer = null,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,13 +116,13 @@ const QuizItem = ({
         <img src={dropdownIcon} width={12} alt="dropdown" />
         <span
           style={{
-            color: isCorrect ? "#10B177" : "#BB1919",
+            color: result ? "#10B177" : "#BB1919",
           }}
         >
-          {isCorrect ? "정답" : "오답"}
+          {result ? "정답" : "오답"}
         </span>
         <span style={{ color: "#B2B2B2" }}>
-          {+isCorrect} / 1 (총 1점 중 {+isCorrect}점)
+          {+result} / 1 (총 1점 중 {+result}점)
         </span>
       </QuizItemTitle>
 
@@ -120,7 +130,7 @@ const QuizItem = ({
         <QuizContentContainer>
           <hr />
           <QuestionContainer>
-            문제: {question}
+            문제: {content}
             <div>
               <input
                 type="radio"
@@ -141,16 +151,16 @@ const QuizItem = ({
           <AnswerContainer>
             <div
               style={{
-                color: isCorrect ? "#10B177" : "#BB1919",
+                color: result ? "#10B177" : "#BB1919",
               }}
             >
-              {isCorrect ? "답이 맞습니다" : "답이 틀립니다"}
+              {result ? "답이 맞습니다" : "답이 틀립니다"}
             </div>
-            <div>정답 설명: {answer}</div>
+            <div>정답 설명: {comment}</div>
           </AnswerContainer>
           <FeedbackContainer>
             <span>피드백</span>
-            <FeedbackContent>댓글: {feedback}</FeedbackContent>
+            <FeedbackContent>댓글: {comment}</FeedbackContent>
           </FeedbackContainer>
         </QuizContentContainer>
       )}
