@@ -10,7 +10,7 @@ html {
 
 .main_analyze {
     display: flex;
-    height: 90%;
+    height: 100%;
 }
 
 .body {
@@ -69,7 +69,7 @@ html {
 .body_container_name {
     display: flex;
     width: 100%;
-    height: 10%;
+    height: 8%;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -262,7 +262,7 @@ html {
 .body_improve_data_image {
     display: flex;
     width: 80%;
-    margin: 12px auto;
+    margin: 6px auto;
     justify-content: flex-start;
     flex-direction: column;
 }
@@ -291,7 +291,7 @@ html {
     flex-shrink: 0;
     color: rgba(0, 0, 0, 0.60);
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;

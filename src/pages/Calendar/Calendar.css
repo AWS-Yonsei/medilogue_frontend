@@ -1,105 +1,143 @@
-.c_image {
-    aspect-ratio : 1.19;
-    width: 69px;
-}
-.mt_4{
-    margin-top: 4px;
+.html {
+    width: 100%;
+    height: 100%;
 }
 
-.flex_col{
+.main {
     display: flex;
+    height: 90%;
+}
+
+.body {
+    display: flex;
+    width: 85%;
+}
+
+.body_calandar {
+    display: flex;
+    width: 80%;
+    margin: 12px;
+    justify-content: center;
+}
+
+.body_selection {
+    display: flex;
+    width: 20%;
+    margin: 12px 24px 12px 12px;
+    padding: 6px;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.30);
+    background: #FFF;
+}
+
+.body_selection_topbar {
+    display: flex;
+    width: 100%;
+    height: 15%;
+    margin: 6px;
+}
+
+.body_selection_topbar_container {
+    display: flex;
+    height: 100%;
+    width: 70%;
+    justify-content: space-evenly;
     flex-direction: column;
 }
 
-.flex_col1{
+.body_selection_topbar_title {
+    color: #525050;
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.body_selection_topbar_date {
+    color: #151313;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.body_selection_topbar_alarm {
+    width: 40px;
+    height: 40px;
+    margin: 15px;
+    flex-shrink: 0;
+}
+
+.body_selection_main {
     display: flex;
-    flex-direction: column;
-    flex: 1 1 0%;
+    width: 100%;
+    height: 85%;
+    margin: 6px;
 }
 
-.calendar_memo{
-  display: block;
-
-}
-.time{
-    flex-grow: 1; 
+.time {
+    flex-grow: 1;
     align-self: flex-start;
-    font-size: 0.875rem; /* 14px */
-    line-height: 1.25rem; /* 20px */ 
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     white-space: nowrap;
     color: rgb(63 63 70);
 }
 
-.calendar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.calendar-app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .react-calendar {
+.react-calendar {
     font-size: 20px;
-    width: 1200px;
-    height: 750px;
+    width: 95%;
+    height: 100%;
     margin: 0 auto;
-    border: 1px solid #ddd; 
-    border-radius: 8px; 
-    overflow: hidden; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  }
+    border: 1px solid #E9EAEC;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  
-  
-  
-  .react-calendar__tile {
+.react-calendar__tile {
     display: flex;
     text-align: left;
     width: 200px;
     height: 138px;
-    border: 1px solid #eee; 
+    border: 1px solid #eee;
     font-size: 20px;
-  }
-  
-  .react-calendar__tile--active {
+}
+
+.react-calendar__tile--active {
     background: #8FB0C6;
-  }
-  
-  .memo-display p {
+}
+
+.memo-display p {
     font-size: 7px;
-    margin: 0; 
-  }
-  
-  
-  .calendar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .memo-container {
+    margin: 0;
+}
+
+
+.memo-container {
     background: white;
     padding: 20px;
     width: 300px;
-  }
-  
-  .memo-editor {
+}
+
+.memo-editor {
     margin-bottom: 20px;
-  }
-  
-  .memo-display {
+}
+
+.memo-display {
     margin-top: 20px;
-  }
-  
-  textarea {
+}
+
+textarea {
     width: 100%;
     height: 100px;
-  }
-  
-  .modal-container {
+}
+
+.modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -108,26 +146,31 @@
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-  }
-  
-  .memo-content {
+}
+
+.memo-content {
     position: relative;
-  }
-  .memo-count{
-    
-    bottom: -20px; /* 숫자가 밑으로 이동할 위치 조정 */
-    left: 50%; /* 숫자를 가운데로 이동 */
+}
+
+.memo-count {
+
+    bottom: -20px;
+    /* 숫자가 밑으로 이동할 위치 조정 */
+    left: 50%;
+    /* 숫자를 가운데로 이동 */
     transform: translateY(150%);
-    font-size: 18px; /* 숫자의 크기 조정 */
+    font-size: 18px;
+    /* 숫자의 크기 조정 */
     color: black;
-  }
-  
-  .memo-count::before{
+}
+
+.memo-count::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #00ff00; /* 형광빛 색상 */
-    z-index: -1; /* 숫자 뒤로 보내기 */
-  }
-  
+    background-color: #00ff00;
+    /* 형광빛 색상 */
+    z-index: -1;
+    /* 숫자 뒤로 보내기 */
+}

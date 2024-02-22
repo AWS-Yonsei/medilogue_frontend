@@ -194,11 +194,6 @@ html {
     margin-left: 30px;
 }
 
-.main {
-    display: flex;
-    height: max-content;
-}
-
 .side-nav {
     display: flex;
     flex-direction: column;
