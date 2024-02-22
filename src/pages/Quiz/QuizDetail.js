@@ -29,8 +29,8 @@ const Quiz = () => {
   const [isTaken, setIsTaken] = useState(true);
   const [quizNum, setQuizNum] = useState(0);
   const [correctNum, setCorrectNum] = useState(0);
-  const [startTime, setStartTime] = useState("2024 - 02 - 22 22:16");
-  const [endTime, setEndTime] = useState("2024 - 02 - 22 22:22");
+  const [startTime, setStartTime] = useState("2024 - 02 - 23 14:06");
+  const [endTime, setEndTime] = useState("2024 - 02 - 23 14:15");
 
   const [questionList, setQuestionList] = useState([]);
   const getResults = async () => {

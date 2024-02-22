@@ -12,7 +12,8 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState(diabetesQuiz);
 
   useEffect(() => {
-    if(category === '당뇨병 퀴즈' || category === '당뇨병 퀴즈2') {
+    if(category === '당뇨병 퀴즈' || category === '당뇨병 퀴즈2' || category === 'diabetes') {
+      setQuizData(diabetesQuiz);
     } else {
       setQuizData(highbloodpressureQuiz);
     }
