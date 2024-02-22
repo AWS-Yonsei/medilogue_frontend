@@ -11,9 +11,8 @@ import Sharescreen from "../../../components/Share Screen.png";
 import Record from "../../../components/Record.png";
 import Management from "../../../components/Management.png";
 import Out from "../../../components/Call_end.png";
-import Placeholder from "../../../components/placeholder.jpg";
-import CloseButton from '../../../components/closebutton.png';
 import VideoPlayer from "./VideoPlayer";
+import TalkRoom from "./TalkRoom.js";
 import AWS from 'aws-sdk';
 
 const ChatRoomLayout = () => {
@@ -134,6 +133,7 @@ const ChatRoomLayout = () => {
                             X    
                         </button>
                     </div>
+                    <TalkRoom></TalkRoom>
                 </div>
             </div>
             <div className="chatroom_bottom">

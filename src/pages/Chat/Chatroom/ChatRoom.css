@@ -25,12 +25,12 @@
 
 .chatroom_chat {
     display: flex;
+    flex-direction: column;
     width: 30%;
     height: 97%;
     margin: 12px;
     border: 1px solid #C4C4C4;
     background: #FFFEF9;
-    ;
 }
 
 .chatroom_topbar {

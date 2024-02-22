@@ -1,5 +1,5 @@
 import "./ChatPortal.css"
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components'
 import logo from "../../../components/logo.png";
@@ -21,9 +21,8 @@ import MicrophoneButton from '../../../components/microphone.png';
 import SettingButton from '../../../components/settings.png';
 import OptionButton from '../../../components/option.png';
 import Avatar from "../../../components/placeholder.jpg";
-import Camera from "../../../components/camera.png";
-import Send from "../../../components/send.png";
 import { SocketContext } from "../socket";
+import TalkRoom from "./TalkRoom.js";
 
 const ChatPortalLayout = () => {
     const {
@@ -34,8 +33,10 @@ const ChatPortalLayout = () => {
         callEnded,
         stream,
         call
-      } = useContext(SocketContext);
+    } = useContext(SocketContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [messages, setMessages] = useState([]);
+    const [currentTypingId, setCurrentTypingId] = useState(null);
     const customStyles = {
         content: {
             background: 'rgba(255, 255, 255, 0.5)',
@@ -205,29 +206,10 @@ const ChatPortalLayout = () => {
                     </div>
                 </div>
                 <div className="body">
-                    <div className="chat_room_box">
-
-                    </div>
-                    <div className="chat_send_square_container">
-                        <div className="chat_send_square">
-                            <input className="chat_send_square_text" placeholder="Type your message" maxLength={400} />
-                            <button><img class="chat_send_square_logo" src={Camera} /></button>
-                            <button><img class="chat_send_square_logo" src={Send} /></button>
-                        </div>
-                    </div>
+                    <TalkRoom/>   
                 </div>
             </div>
-
         </>
     );
 }
-
-
-
 export default ChatPortalLayout;
-
-
-
-
-
-
