@@ -9,7 +9,8 @@ import EnemyImage from '../../components/quiz/Enemy.png';
 import CharacterImage from '../../components/quiz/Character.png';
 import background from "../../components/quiz/background.png";
 import sword from "../../components/quiz/sword.png";
-
+import OImage from '../../components/quiz/O.png';
+import XImage from '../../components/quiz/X.png';
 
 const API_URL = "http://localhost:8080";
 
@@ -145,7 +146,7 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
     characterContainer: {
       textAlign: 'center',
     },
-    characterTitle: {
+    characterTitle: { 
       fontSize: '1.5em',
       marginBottom: '10px',
       color: 'blue',
@@ -193,9 +194,9 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
             <p>HP: {playerHP}</p>
           </div>
 
-        <div style={styles.questionContainer}>
-          <h2>{questionData.question}</h2>
-        </div>
+          <div style={styles.questionContainer}>
+            <h2 style={{ fontSize: '32px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold', color: 'black' }}>{questionData.question}</h2>
+          </div>
 
         <div style={styles.characterContainer}>
           <img src={EnemyImage} alt="질병" style={{ width: '200px', height: '200px' }} />
@@ -211,11 +212,12 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
               ...styles.answerButton,            
               marginRight: '10px',  
               paddingBottom: '35px',
-              backgroundColor: selectedAnswer === 'O' ? 'lightblue' : 'white',
+              backgroundImage: `url(${OImage})`,
+              backgroundSize: 'cover', 
+              backgroundPosition: 'center', 
+              border: 'none',
             }}
-          >
-            O
-          </div>
+          ></div>
 
           <button onClick={handleSubmitAttack} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '180px', height: '180px', marginTop: '50px'}}>
           <img src={sword} alt="Sword" style={{ width: '150px', height: '150px'}} />
@@ -229,11 +231,12 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
             ...styles.answerButton,            
             marginLeft: '10px',
             paddingBottom: '35px',
-            backgroundColor: selectedAnswer === 'X' ? 'lightblue' : 'white',
+            backgroundImage: `url(${XImage})`,
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
+            border: 'none',
           }}
-        >
-          X
-        </div>
+        ></div>
       </div>
       
       <Modal
