@@ -57,10 +57,6 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
   }, [playerHP, enemyHP]);
 
 
-  const handleAnswerClick = (answer) => {
-    setSelectedAnswer(answer);
-  };
-
   const handleSubmitAnswer = () => {
 
       const isGameFinished = false; 
@@ -76,35 +72,31 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
     
   };
   
-  const handleSubmitAttack = () => {
+  useEffect(() => {
     if (selectedAnswer !== null && !isGameOver) {
       const correctAnswer = questionData.answer;
       const isCorrect = selectedAnswer === correctAnswer; 
-
+  
       const result = {
-        qid: i + 1, // 문제 번호 (1부터 시작)
+        qid: i + 1,
         question : questionData.question,
-        result: isCorrect, // 문제를 맞추면 true, 틀리면 false
-        comment: questionData.reason // 문제의 이유
-      }
+        result: isCorrect,
+        comment: questionData.reason
+      };
       setQuizResults(prevQuizResults => [...prevQuizResults, result]);
-      i++
-
+      i++;
+  
       if (isCorrect) {
         setModalIsOpen(true);
         state = "correct";
         setEnemyHP(enemyHP - 20);       
-        
-        
       } else {
         setModalIsOpen(true);
         state = "wrong"
         setPlayerHP(playerHP - 20);
-        
-        }
-              
+      }
     }
-  };
+  }, [selectedAnswer, isGameOver]);
 
 
   const sendData = async () => {
@@ -207,7 +199,10 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
 
       <div style={{ display: 'flex', flexDirection: 'row' }}>
         <div
-            onClick={() => handleAnswerClick('O')}
+            onClick={() => {
+              setSelectedAnswer('O');
+              setModalIsOpen(true);}
+          }
             style={{
               ...styles.answerButton,            
               marginRight: '10px',  
@@ -218,15 +213,11 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
               border: 'none',
             }}
           ></div>
-
-          <button onClick={handleSubmitAttack} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '180px', height: '180px', marginTop: '50px'}}>
-          <img src={sword} alt="Sword" style={{ width: '150px', height: '150px'}} />
-            <span style={{fontSize : '20px'}}>공격하기</span>
-          </button>
-
-          
           <div
-          onClick={() => handleAnswerClick('X')}
+          onClick={() => {
+            setSelectedAnswer('X');
+            setModalIsOpen(true);}
+          }
           style={{
             ...styles.answerButton,            
             marginLeft: '10px',
@@ -253,19 +244,35 @@ const GameScreen = ({ questionData, onAnswer, onGameOver, onCategorySelect }) =>
         }}>확인</button>
       </Modal>
 
-      <Modal
-        isOpen={modalIsOpen} 
-        onRequestClose={() => setModalIsOpen(false)} 
-        style={modalStyles}
-      >
-        <h2>{state === "correct" && <p>정답입니다. <br></br>{questionData.reason}</p>}</h2>
-        <h2>{state === "wrong" && <p>오답입니다. <br></br>{questionData.reason}</p>}</h2>
-        
-        <button onClick={() => {
-          setModalIsOpen(false); 
-          handleSubmitAnswer(); 
-        }}>확인</button>
-      </Modal>
+<Modal
+  isOpen={modalIsOpen} 
+  onRequestClose={() => setModalIsOpen(false)} 
+  style={modalStyles}
+>
+  <h2 style={{ textAlign: 'center', fontSize: '24px' }}>
+    {state === "correct" && <p style={{ fontSize: '20px', marginBottom: '10px'}}>정답입니다. <br></br><br></br>{questionData.reason}</p>}
+    {state === "wrong" && <p style={{ fontSize: '20px', marginBottom: '10px' }}>오답입니다. <br></br><br></br>{questionData.reason}</p>}
+  </h2>
+  
+  <button 
+    onClick={() => {
+      setModalIsOpen(false); 
+      handleSubmitAnswer(); 
+    }} 
+    style={{
+      border: '2px solid black', // 테두리 추가
+      borderRadius: '5px', // 테두리 둥글게
+      padding: '10px', // 내부 여백
+      margin: 'auto', // 가운데 정렬을 위한 외부 여백
+      display: 'block', // 블록 요소로 변경하여 가운데 정렬
+      marginTop: '20px', // 상단 여백
+      cursor: 'pointer', // 커서 모양 변경
+    }}
+  >
+    확인
+  </button>
+</Modal>
+
 
       {isGameOver && renderGameOverScreen()}
     </div>
