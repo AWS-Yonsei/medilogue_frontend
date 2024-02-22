@@ -2,13 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useAsyncError, useParams } from 'react-router-dom';
 import GameScreen from './GameScreen';
 import diabetesQuiz from '../../data/diabetesQuiz';
+import highbloodpressureQuiz from '../../data/highbloodpressureQuiz';
 
 const Quiz = () => {
-  let [quizData, setQuizData] = useState(diabetesQuiz);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const { category } = useParams();
+  const [quizData, setQuizData] = useState(diabetesQuiz);
+
+  useEffect(() => {
+    if(category === '당뇨병 퀴즈' || category === '당뇨병 퀴즈2') {
+    } else {
+      setQuizData(highbloodpressureQuiz);
+    }
+  }, []);
 
   const handleAnswer = (answer) => {
     

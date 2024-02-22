@@ -28,6 +28,7 @@ import searchIcon from "../../components/quiz/serach.png";
 import arrowIcon from "../../components/quiz/arrow.png";
 import clockIcon from "../../components/quiz/clock.png";
 import sampleQuizIcon from "../../components/quiz/sample_icon.png";
+import sampleQuizIcon2 from "../../components/quiz/sample_icon2.png";
 
 const Quiz = () => {
   const navigate = useNavigate();
@@ -52,26 +53,30 @@ const Quiz = () => {
     {
       take_test: true,
       category: "당뇨병 퀴즈",
+      sub_category: "diabetes",
       quiz_cnt: 8,
       iconPath: sampleQuizIcon,
     },
     {
       take_test: false,
       category: "당뇨병 퀴즈2",
+      sub_category: "diabetes",
       quiz_cnt: 8,
       iconPath: sampleQuizIcon,
     },
     {
       take_test: false,
-      category: "당뇨병 퀴즈3",
+      category: "고혈압 퀴즈",
+      sub_category: "highbloodpressure",
       quiz_cnt: 6,
-      iconPath: sampleQuizIcon,
+      iconPath: sampleQuizIcon2,
     },
     {
       take_test: true,
-      category: "당뇨병 퀴즈4",
+      category: "고혈압 퀴즈2",
+      sub_category: "highbloodpressure",
       quiz_cnt: 10,
-      iconPath: sampleQuizIcon,
+      iconPath: sampleQuizIcon2,
     },
   ]);
 
@@ -111,11 +116,12 @@ const Quiz = () => {
       <QuizItemContainer>
         {quizList.map((item) => (
           <QuizItem
-            onClick={() => {
-              navigate(`${"/quiz/feedback/"+item.category}`);
-            }}
+
           >
-            <UpperContainer>
+            <UpperContainer
+              onClick={() => {
+              navigate(`${"/quiz/"+item.sub_category}`)}}
+            >
               <QuizInfoWrapper>
                 <QuizInfo>
                   <QuizTitle>{item.category}</QuizTitle>
@@ -130,7 +136,9 @@ const Quiz = () => {
             </UpperContainer>
 
             <DivideLine />
-            <QuizStatus $take_test={item.take_test}>
+            <QuizStatus 
+              $take_test={item.take_test}             
+              onClick={() => { navigate(`${"/quiz/feedback/"+item.sub_category}`)}}>
               {item.take_test ? "피드백" : "미응시"}
             </QuizStatus>
           </QuizItem>
