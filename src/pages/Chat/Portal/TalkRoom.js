@@ -10,13 +10,7 @@ const TalkRoom = () => {
     const handleSendMessage = (message) => {
         setMessages((prevMessages) => [
             ...prevMessages,
-            { text: message, isUser: true },
-            {
-                text: `${message}`,
-                isUser: false,
-                isTyping: true,
-                id: Date.now()
-            }
+            { text: message, isUser: true }
         ]);
     };
     const handleEndTyping = (id) => {
