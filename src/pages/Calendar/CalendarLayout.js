@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import "./Calendar.css"
 import { useNavigate } from "react-router-dom";
+import PortalMenu from "../../layouts/PortalMenu/PortalMenu.js";
+import PortalPatientSideBar from "../../layouts/PortalMenu/PortalPatientSideBar.js";
 const API_URL = 'http://localhost:8080'
+
 
 const CalendarLayout = ({}) => {
   const [memos, setMemos] = useState({});
@@ -93,6 +96,7 @@ const CalendarLayout = ({}) => {
       }
   
       return (
+        
         <div key={index} className={`gap-4 justify-between mt-8 `}>
           <div className="time">
             {new Date(memo.startTime).toISOString().split('T')[1].split('.')[0]}
@@ -148,16 +152,19 @@ const CalendarLayout = ({}) => {
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/366a401627ee8b7fe59452f917d17833e1267e2e47ffe63495e5d6213f670757?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
             className="mt-6 c_image"
+            onClick={() => navigate("/")}
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b51516d30c032f7b31af6563ba64b990e35dccd5da78b6546eef7e0dbb3f9132?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
             className="c_image"
+            onClick={() => navigate("/doctor_portal")}
           />
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b614b93a28b5ca40a1ff892d7a8d8cffd3fcf459577e96616739260722785f39?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
             className="c_image"
+            onClick={() => navigate("/chat_portal")}
           />
           <img
             loading="lazy"
@@ -168,6 +175,7 @@ const CalendarLayout = ({}) => {
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/a0cd99d5499f718d9454600a83f8bed8a7370dcf25a95ddd78ba394a137afe83?apiKey=bfe5da7f1cdd4f0cbcd10436e75512b7&"
             className="c_image"
+            onClick={() => navigate("/record")}
           />
           <img
             loading="lazy"

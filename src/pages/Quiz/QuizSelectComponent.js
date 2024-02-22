@@ -4,6 +4,8 @@ export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  padding-left: 100px;
+  padding-top: 10x;
 `;
 export const TitleIcon = styled.img`
   width: 80px;
@@ -26,6 +28,8 @@ export const SearchBarContainer = styled.div`
   width: 650px;
   height: 55px;
   border-radius: 15px;
+  margin-right: 20px;
+  padding-left: 100px;
 `;
 export const SearchBar = styled.input`
   width: calc(100% - 55px);
@@ -34,10 +38,12 @@ export const SearchBar = styled.input`
   border: 1px solid #0070db99;
   padding: 0 10px;
 
+
   ::placeholder {
     font-family: Poppins;
     font-size: 16px;
     font-weight: 500;
+    
   }
 `;
 export const SearchButton = styled.div`
@@ -90,6 +96,8 @@ export const QuizItemContainer = styled.div`
   flex-wrap: wrap;
   gap: 20px 40px;
   width: 100%;
+  padding-left: 100px;
+
 
   :hover {
     cursor: pointer;

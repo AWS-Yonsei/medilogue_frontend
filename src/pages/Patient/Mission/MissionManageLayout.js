@@ -21,7 +21,7 @@ const MissionLayout = () => {
                 </PortalPatientSideBar>
                 <div className="body">
                     <div className="body_title">
-                        정강희 님의 오늘의 미션
+                        김영서님의 오늘의 미션
                     </div>
                     <div className="body_button">
                         <div className="body_button_add_box">
@@ -57,7 +57,7 @@ const MissionLayout = () => {
                                     점심 30분 후 약 복용
                                 </div>
                                 <div className="body_table_data_detail">
-                                    죽으면 됩니다.
+                                    혈당약을 꼭 복용하세요!
                                 </div>
                                 <div className="body_table_data_check">
                                     <Checkbox checked={uncheck_1} onChange={check_1} />

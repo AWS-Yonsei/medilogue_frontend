@@ -19,7 +19,7 @@ const Menu = () => {
                     <Link to={'/quiz'}>Quiz</Link>
                 </li>
                 <li className="list_menu">
-                    <Link to={'/calendar'}>Calendar</Link>
+                    <Link to={'/calendar/2024-02-23'}>Calendar</Link>
                 </li>
             </ul>
             <div className="navbar_login">

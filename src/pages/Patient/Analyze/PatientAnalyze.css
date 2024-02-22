@@ -36,7 +36,8 @@ html {
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
 }
 
 .body_improve {
@@ -48,7 +49,8 @@ html {
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
 }
 
 .body_improve_data {
@@ -60,7 +62,8 @@ html {
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
 }
 
 .body_container_name {
@@ -161,6 +164,8 @@ html {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: -webkit-max-content;
+    height: -moz-max-content;
     height: max-content;
     padding: 12px;
 
@@ -279,6 +284,8 @@ html {
 .body_improve_data_main {
     display: flex;
     width: 90%;
+    height: -webkit-max-content;
+    height: -moz-max-content;
     height: max-content;
     margin: 8px 16px;
     flex-shrink: 0;
@@ -288,4 +295,8 @@ html {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+
+.radius_img_2 {
+    border-radius: 20%;
 }

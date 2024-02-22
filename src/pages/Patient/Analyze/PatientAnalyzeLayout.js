@@ -14,6 +14,7 @@ import Solution2 from "../../../components/solution/2.jpg";
 import Solution3 from "../../../components/solution/3.jpg";
 import Solution4 from "../../../components/solution/4.jpg";
 import Solution5 from "../../../components/solution/5.jpg";
+import ChartData from "../../../components/solution/chart1.png";
 
 const PatientConsultLayout = () => {
     const suggestion_data = Solution;
@@ -65,7 +66,7 @@ const PatientConsultLayout = () => {
                                 </div>
                             </div>
                             <div className="body_report_bottom_box">
-                                <div className="placeholder">Chart</div>
+                                <img src={ChartData}  className="radius_img_2"/>
                             </div>
                         </div>
                         <div className="body_improve">
