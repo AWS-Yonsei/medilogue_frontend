@@ -1,6 +1,6 @@
 import "./PatientPortal.css"
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, PureComponent } from 'react';
 import Redbox from "../../../components/redbox.png"
 import Bluebox from "../../../components/bluebox.png"
 import Yellowbox from "../../../components/yellowbox.png"
@@ -12,9 +12,59 @@ import PortalMenu from "../../../layouts/PortalMenu/PortalMenu";
 import PortalPatientSideBar from "../../../layouts/PortalMenu/PortalPatientSideBar";
 import ChartData1 from "../../../components/solution/chart2.png"
 import ChartData2 from "../../../components/solution/chart3.png"
+import { RadialBarChart, RadialBar,BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const PatientPortalLayout = () => {
-   
+
+    const data = [
+        {
+            name: '2023년 07월',
+            FBS: 187
+        },
+        {
+            name: '2023년 08월',
+            FBS: 199
+        },
+        {
+            name: '2023년 09월',
+            FBS: 123
+        },
+        {
+            name: '2023년 10월',
+            FBS: 160
+        },
+        {
+            name: '2023년 11월',
+            FBS: 189
+        },
+        {
+            name: '2023년 12월',
+            FBS: 129
+        },
+        {
+            name: '2024년 1월',
+            FBS: 130
+        },
+    ];
+    const data2 = [
+        {
+            name: '평균',
+            avg: 53,
+            fill: '#8884d8',
+        },
+        {
+            name: '김영서님',
+            avg: 60,
+            fill: '#83a6ed',
+        }
+    ];
+
+    const style = {
+        top: '50%',
+        right: 0,
+        transform: 'translate(0, -50%)',
+        lineHeight: '24px',
+    };
     return (
         <>
             <PortalMenu>
@@ -54,10 +104,43 @@ const PatientPortalLayout = () => {
                     </div>
                     <div className="charts">
                         <div className="chart-box-left">
-                            <img src={ChartData1}  />
+                            <div className="chart-box-title">공복 혈당(FBS)</div>
+                            <ResponsiveContainer width="100%" height="80%">
+                                <BarChart
+                                    width={400}
+                                    height={250}
+                                    data={data}
+                                    margin={{
+                                        top: 0,
+                                        right: 50,
+                                        left: 20,
+                                        bottom: 10,
+                                    }}
+                                    barSize={20}
+                                >
+                                    <XAxis dataKey="name" scale="point" padding={{ left: 10, right: 10 }} />
+                                    <YAxis />
+                                    <Tooltip />
+                                    <Legend />
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <Bar dataKey="FBS" fill="#3088C8" background={{ fill: '#eee' }} />
+                                </BarChart>
+                            </ResponsiveContainer>
                         </div>
                         <div className="chart-box-right">
-                            <img src={ChartData2}  />
+                        <div className="chart-box-title">미션 달성률</div>
+                            <ResponsiveContainer width="100%" height="80%">
+                                <RadialBarChart cx="50%" cy="40%" innerRadius="30%" outerRadius="100%" barSize={5} data={data2}>
+                                    <RadialBar
+                                        minAngle={3.6}
+                                        label={{ position: 'insideTopRight', fill: '#000', offset: '3' }}
+                                        background
+                                        clockWise
+                                        dataKey="avg"
+                                    />
+                                    <Legend iconSize={30} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
+                                </RadialBarChart>
+                            </ResponsiveContainer>
                         </div>
                     </div>
                     <div className="tables">
